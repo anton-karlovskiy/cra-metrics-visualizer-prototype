@@ -108,6 +108,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+div#root {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
 a {
   font-weight: var(--typography-font-weight-regular);
   color: var(--palette-text-secondary);
@@ -126,16 +134,16 @@ button {
   border: 0;
   border-radius: 2px;
   height: 36px;
+  user-select: none;
   transition: background-color .2s, box-shadow .2s;
   
   /* truncate string with ellipsis */
-  min-width: 36px;
+  min-width: 64px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 
   font-size: var(--typography-button-font-size);
-  line-height: var(--typography-button-line-height);
   letter-spacing: var(--typography-button-letter-spacing);
   font-weight: var(--typography-font-weight-bold);
   text-transform: uppercase;
