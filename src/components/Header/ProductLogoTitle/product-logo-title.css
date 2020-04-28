@@ -1,0 +1,37 @@
+
+.product-logo-title {
+  display: flex;
+  height: 36px;
+  margin: 6px 0;
+}
+
+.product-link {
+  opacity: 1;
+  transition: opacity .2s;
+}
+
+.product-link:hover,
+.product-link:focus {
+  opacity: .7;
+  text-decoration: none;
+}
+
+.product-logo {
+  height: 32px;
+  margin: 2px 16px 2px 0;
+  min-width: 32px;
+  width: 32px;
+}
+
+.product-title {
+  color: var(--palette-text-secondary);
+  font-size: 20px;
+  line-height: 36px;
+  white-space: nowrap;
+}
+
+.product-title:hover,
+.product-title:focus {
+  color: var(--palette-text-primary);
+  transition: color .2s;
+}

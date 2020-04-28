@@ -1,0 +1,29 @@
+
+nav.navbar:not(:empty) {
+  margin-left: 48px;
+}
+
+nav.navbar {
+  overflow: hidden;
+  width: 100%;
+  transition: flex .2s, margin .2s, width .2s;
+}
+
+nav.navbar > ul {
+  display: flex;
+  list-style-type: none;
+  min-width: 308px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+nav.navbar > ul > li {
+  display: inline-flex;
+  margin: 0;
+}
+
+nav.navbar > ul > li > a {
+  text-align: center;
+  padding: 14px 16px;
+}
