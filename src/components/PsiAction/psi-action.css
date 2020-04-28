@@ -5,7 +5,7 @@
   box-shadow: var(--shadows-4);
 }
 
-.psi-action div.url-and-analyze {
+.psi-action .url-and-analyze {
   display: flex;
   justify-content: center;
 }
@@ -13,19 +13,13 @@
 .psi-action input[name=url] {
   border: none;
   padding: 0 16px;
-  font-size: 14px;
+  font-size: var(--typography-body2-font-size);
+  line-height: var(--typography-body2-line-height);
+  letter-spacing: var(--typography-body2-letter-spacing);
   height: auto;
   width: 40%;
 }
 
 .analyze-submit {
-  padding: 8px 16px;
   margin-left: 8px;
-  min-width: 96px;
-  box-shadow: none;
-  background-color: var(--palette-grey-500);
-}
-
-.analyze-submit:hover {
-  background-color: var(--palette-grey-500-dark);
 }

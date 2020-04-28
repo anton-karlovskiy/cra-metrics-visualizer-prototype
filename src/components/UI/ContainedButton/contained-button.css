@@ -1,0 +1,9 @@
+
+.contained-button {
+  padding: 6px 16px;
+  background-color: var(--palette-grey-500);
+}
+
+.contained-button:hover {
+  background-color: var(--palette-grey-500-dark);
+}
