@@ -1,5 +1,4 @@
 
-// ray test touch <
 import React from 'react';
 
 import { PERF_METRICS } from 'utils/constants';
@@ -10,7 +9,9 @@ const MetricLabel = ({ performanceMetric }) => {
 
   return (
     <div
-      style={{backgroundColor: `var(${targetPerfMetric.COLOR})`}}
+      style={{
+        backgroundColor: `var(${targetPerfMetric.COLOR})`,
+      }}
       className='metric-label'>
       {targetPerfMetric.LABEL}
     </div>
@@ -18,4 +19,3 @@ const MetricLabel = ({ performanceMetric }) => {
 };
 
 export default MetricLabel;
-// ray test touch >

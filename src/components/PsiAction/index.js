@@ -24,6 +24,11 @@ const PsiAction = ({ updateLighthouseInfo }) => {
       const responseJson = await response.json();
       const lighthouse = responseJson.lighthouseResult;
 
+      // ray test touch <
+      const finalScreenshot = lighthouse.audits['final-screenshot'];
+      console.log('ray : ***** finalScreenshot => ', finalScreenshot);
+      // ray test touch >
+
       const performanceMetrics = {
         [PERF_METRICS.FIRST_BYTE.ID]: lighthouse.audits[PERF_METRICS.FIRST_BYTE.ID],
         [PERF_METRICS.FIRST_CONTENTFUL_PAINT.ID]: lighthouse.audits[PERF_METRICS.FIRST_CONTENTFUL_PAINT.ID],
