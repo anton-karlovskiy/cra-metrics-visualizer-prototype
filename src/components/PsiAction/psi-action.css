@@ -10,7 +10,7 @@
   justify-content: center;
 }
 
-.psi-action input[name=url] {
+.psi-action input[id=url] {
   border: none;
   padding: 0 16px;
   font-size: var(--typography-body2-font-size);
