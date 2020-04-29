@@ -5,8 +5,6 @@
   margin: 120px 0;
 }
 
-/* ray test touch < */
 .filmstrips > div {
-  display: inline-flex;
+  flex: 1;
 }
-/* ray test touch > */
