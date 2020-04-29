@@ -9,7 +9,7 @@ import './App.css';
 
 const App = () => {
   const [lighthouseInfo, setLighthouseInfo] = useState({
-    performanceMetrics: {},
+    metrics: {},
     screenshotDetails: {}
   });
 

@@ -8,13 +8,13 @@ import './metrics-visualizer.css';
 // TODO: could be lazy-loaded but what pattern?
 const MetricsVisualizer = ({
   lighthouseInfo: {
-    performanceMetrics = {},
+    metrics = {},
     screenshotDetails = {}
   } = {}
 }) => (
   <div className='metrics-visualizer'>
     <Filmstrips screenshotDetails={screenshotDetails} />
-    <Timeline performanceMetrics={performanceMetrics} />
+    <Timeline metrics={metrics} />
   </div>
 );
 

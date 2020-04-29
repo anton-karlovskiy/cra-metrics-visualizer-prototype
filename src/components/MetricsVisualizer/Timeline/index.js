@@ -4,16 +4,14 @@ import React from 'react';
 import MetricLabel from './MetricLabel';
 import './timeline.css';
 
-const Timeline = ({ performanceMetrics }) => {
+const Timeline = ({ metrics }) => {
   return (
     <div className='timeline'>
-      {Object.values(performanceMetrics).map((performanceMetric, index) => (
+      {Object.values(metrics).map((metric, index) => (
         <MetricLabel
-          key={performanceMetric.id}
-          // ray test touch <
+          key={metric.id}
           sequenceNumber={index}
-          // ray test touch >
-          performanceMetric={performanceMetric} />
+          metric={metric} />
       ))}
     </div>
   );

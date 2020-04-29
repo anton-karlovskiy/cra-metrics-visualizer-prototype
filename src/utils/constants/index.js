@@ -3,7 +3,7 @@ const APP_NAME = 'Metrics Visualizer';
 const LOGO_URL = 'https://www.gstatic.com/images/icons/material/product/2x/pagespeed_64dp.png';
 const PSI_ENDPOINT = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed';
 
-const PERF_METRICS = {
+const METRICS = {
   FIRST_BYTE: {
     ID: 'time-to-first-byte',
     LABEL: 'First Byte',
@@ -55,6 +55,6 @@ export {
   APP_NAME,
   LOGO_URL,
   PSI_ENDPOINT,
-  PERF_METRICS,
+  METRICS,
   STRATEGY
 };

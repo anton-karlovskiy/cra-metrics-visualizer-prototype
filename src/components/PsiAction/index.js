@@ -5,7 +5,7 @@ import ContainedButton from 'components/UI/ContainedButton';
 import TextField from 'components/UI/TextField';
 import useForm from 'utils/hooks/use-form';
 import { getImageDimensions } from 'utils/helpers';
-import { PERF_METRICS, PSI_ENDPOINT, STRATEGY } from 'utils/constants';
+import { METRICS, PSI_ENDPOINT, STRATEGY } from 'utils/constants';
 import './psi-action.css';
 
 const PSI_URL = 'psi-url';
@@ -29,12 +29,12 @@ const PsiAction = ({ updateLighthouseInfo }) => {
       console.log('ray : ***** finalScreenshot => ', finalScreenshot);
       // ray test touch >
 
-      const performanceMetrics = {
-        [PERF_METRICS.FIRST_BYTE.ID]: lighthouse.audits[PERF_METRICS.FIRST_BYTE.ID],
-        [PERF_METRICS.FIRST_CONTENTFUL_PAINT.ID]: lighthouse.audits[PERF_METRICS.FIRST_CONTENTFUL_PAINT.ID],
-        [PERF_METRICS.FIRST_INPUT_DELAY.ID]: lighthouse.audits[PERF_METRICS.FIRST_INPUT_DELAY.ID],
-        [PERF_METRICS.SPEED_INDEX.ID]: lighthouse.audits[PERF_METRICS.SPEED_INDEX.ID],
-        [PERF_METRICS.TIME_TO_INTERACTIVE.ID]: lighthouse.audits[PERF_METRICS.TIME_TO_INTERACTIVE.ID]
+      const metrics = {
+        [METRICS.FIRST_BYTE.ID]: lighthouse.audits[METRICS.FIRST_BYTE.ID],
+        [METRICS.FIRST_CONTENTFUL_PAINT.ID]: lighthouse.audits[METRICS.FIRST_CONTENTFUL_PAINT.ID],
+        [METRICS.FIRST_INPUT_DELAY.ID]: lighthouse.audits[METRICS.FIRST_INPUT_DELAY.ID],
+        [METRICS.SPEED_INDEX.ID]: lighthouse.audits[METRICS.SPEED_INDEX.ID],
+        [METRICS.TIME_TO_INTERACTIVE.ID]: lighthouse.audits[METRICS.TIME_TO_INTERACTIVE.ID]
       };
       
       const screenshotDetails = lighthouse.audits['screenshot-thumbnails'].details;
@@ -43,10 +43,10 @@ const PsiAction = ({ updateLighthouseInfo }) => {
       screenshotDetails.intrinsicHeight = dimensions.height;
 
       // ray test touch <
-      console.log('ray : ***** performanceMetrics, screenshotDetails => ', performanceMetrics, screenshotDetails);
+      console.log('ray : ***** metrics, screenshotDetails => ', metrics, screenshotDetails);
       // ray test touch >
       updateLighthouseInfo({
-        performanceMetrics,
+        metrics,
         screenshotDetails
       });
       

@@ -1,19 +1,27 @@
 
 import React from 'react';
 
-import { PERF_METRICS } from 'utils/constants';
+import { METRICS } from 'utils/constants';
 import './metric-label.css';
 
-const MetricLabel = ({ performanceMetric }) => {
-  const targetPerfMetric = Object.values(PERF_METRICS).find(perfMetric => perfMetric.ID === performanceMetric.id);
+const METRIC_LABEL = {
+  HEIGHT: 36,
+  VERTICAL_SPACING: 4
+};
+
+const MetricLabel = ({ metric, sequenceNumber }) => {
+  const targetMetric = Object.values(METRICS).find(item => item.ID === metric.id);
 
   return (
     <div
       style={{
-        backgroundColor: `var(${targetPerfMetric.COLOR})`,
+        backgroundColor: `var(${targetMetric.COLOR})`,
+        height: `${METRIC_LABEL.HEIGHT}px`,
+        top: `${sequenceNumber * (METRIC_LABEL.HEIGHT + METRIC_LABEL.VERTICAL_SPACING)}px`,
+        left: `${sequenceNumber * 12}%`
       }}
       className='metric-label'>
-      {targetPerfMetric.LABEL}
+      {targetMetric.LABEL}
     </div>
   );
 };
