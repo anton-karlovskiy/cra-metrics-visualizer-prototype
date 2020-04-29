@@ -1,26 +1,15 @@
 
 import React from 'react';
 
-import { STRATEGY } from 'utils/constants';
 import './filmstrips.css';
 
 const FILMSTRIP_PADDING = 4;
 
-const SIZE = {
-  [STRATEGY.MOBILE]: {
-    WIDTH: 120,
-    HEIGHT: 192
-  },
-  [STRATEGY.DESKTOP]: {
-    WIDTH: 120,
-    HEIGHT: 192
-  }
-};
-
 const Filmstrips = ({
-  strategy = STRATEGY.MOBILE, // TODO: remove default value
   details: {
-    items = []
+    items = [],
+    intrinsicWidth,
+    intrinsicHeight
   } = {}
 }) => (
   <div className='filmstrips'>
@@ -30,8 +19,8 @@ const Filmstrips = ({
         style={{padding: `${FILMSTRIP_PADDING}px`}}>
         <img
           src={item.data}
-          width={SIZE[strategy].WIDTH}
-          height={SIZE[strategy].HEIGHT}
+          width={intrinsicWidth}
+          height={intrinsicHeight}
           alt='Performance Filmstrip' />
       </div>
     ))}
