@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-import { logoUrl, appName } from 'utils/constants';
+import { LOGO_URL, APP_NAME } from 'utils/constants';
 import './product-logo-title.css';
 
 const ProductLogoTitle = () => (
@@ -11,7 +11,7 @@ const ProductLogoTitle = () => (
       className='product-link'
       data-label='Project Logo (header)'>
       <img
-        src={logoUrl}
+        src={LOGO_URL}
         className='product-logo'
         alt='PageSpeed Metrics Visualizer' />
     </a>
@@ -19,7 +19,7 @@ const ProductLogoTitle = () => (
       href='/'
       className='product-title'
       data-label='Upper Header'>
-      {appName}
+      {APP_NAME}
     </a>
   </div>
 );
