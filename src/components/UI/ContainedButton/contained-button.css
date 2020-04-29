@@ -1,9 +1,18 @@
 
 .contained-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 6px 16px;
   background-color: var(--palette-grey-500);
 }
 
 .contained-button:hover {
   background-color: var(--palette-grey-500-dark);
+}
+
+.contained-button:disabled {
+  pointer-events: none;
+  color: rgba(0, 0, 0, 0.26);
+  background-color: rgba(0, 0, 0, 0.12);
 }

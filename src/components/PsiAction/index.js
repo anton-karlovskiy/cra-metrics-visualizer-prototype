@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 
 import ContainedButton from 'components/UI/ContainedButton';
 import TextField from 'components/UI/TextField';
@@ -10,7 +10,10 @@ import './psi-action.css';
 const PSI_URL = 'psi-url';
 
 const PsiAction = () => {
+  const [loading, setLoading] = useState(false);
+
   const submitCallback = async () => {
+    setLoading(true);
     try {
       const url = inputs[PSI_URL];
       const stragegy = 'mobile'; // TODO: should be a toggle
@@ -43,11 +46,12 @@ const PsiAction = () => {
       }
 
       screenshotsDetails.items = items;
-
+      
       console.log('ray : ***** lighthouseMetrics, screenshotsDetails => ', lighthouseMetrics, screenshotsDetails);
     } catch (error) {
       console.log('[PsiAction submitCallback] error => ', error);
     }
+    setLoading(false);
   };
 
   const { inputs, inputChangeHandler, onSubmitHandler } = useForm(submitCallback);
@@ -68,6 +72,7 @@ const PsiAction = () => {
           placeholder='Enter a web page URL'
           aria-label='Enter a web page URL' />
         <ContainedButton
+          loading={loading}
           type='submit'
           className='analyze-submit'>
           Analyze
