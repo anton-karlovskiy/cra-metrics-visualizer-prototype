@@ -5,24 +5,44 @@ const PSI_ENDPOINT = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed
 
 const PERF_METRICS = {
   FIRST_BYTE: {
-    KEY: 'time-to-first-byte',
-    LABEL: 'First Byte'
+    ID: 'time-to-first-byte',
+    LABEL: 'First Byte',
+    COLOR: '--palette-blue-500'
+  },
+  FIRST_PAINT: {
+    ID: 'first-paint',
+    LABEL: 'First Paint',
+    COLOR: '--palette-amber-500'
   },
   FIRST_CONTENTFUL_PAINT: {
-    KEY: 'first-contentful-paint',
-    LABEL: 'First Contentful Paint'
+    ID: 'first-contentful-paint',
+    LABEL: 'First Contentful Paint',
+    COLOR: '--palette-green-500'
+  },
+  LARGEST_CONTENTFUL_PAINT: {
+    ID: 'largest-contentful-paint',
+    LABEL: 'Largest Contentful Paint',
+    COLOR: '--palette-purple-500'
   },
   FIRST_INPUT_DELAY: {
-    KEY: 'max-potential-fid',
-    LABEL: 'First Input Delay'
+    ID: 'max-potential-fid',
+    LABEL: 'First Input Delay',
+    COLOR: '--palette-teal-500'
   },
   SPEED_INDEX: {
-    KEY: 'speed-index',
-    LABEL: 'Speed Index'
+    ID: 'speed-index',
+    LABEL: 'Speed Index',
+    COLOR: '--palette-orange-500'
   },
   TIME_TO_INTERACTIVE: {
-    KEY: 'interactive',
-    LABEL: 'Time To Interactive'
+    ID: 'interactive',
+    LABEL: 'Time To Interactive',
+    COLOR: '--palette-pink-500'
+  },
+  CUMULATIVE_LAYOUT_SHIFT: {
+    ID: 'cumulative-layout-shift',
+    LABEL: 'Cumulative Layout Shift',
+    COLOR: '--palette-cyan-500'
   }
 };
 

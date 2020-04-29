@@ -4,10 +4,10 @@ import React from 'react';
 import AspectRatioBox from 'components/UI/AspectRatioBox';
 import './filmstrips.css';
 
-const FILMSTRIP_PADDING = 8;
+const FILMSTRIP_PADDING = 1;
 
 const Filmstrips = ({
-  details: {
+  screenshotDetails: {
     items = [],
     intrinsicWidth,
     intrinsicHeight

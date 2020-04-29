@@ -24,11 +24,11 @@ const PsiAction = ({ updateLighthouseInfo }) => {
       const lighthouse = responseJson.lighthouseResult;
 
       const performanceMetrics = {
-        [PERF_METRICS.FIRST_BYTE.LABEL]: lighthouse.audits[PERF_METRICS.FIRST_BYTE.KEY],
-        [PERF_METRICS.FIRST_CONTENTFUL_PAINT.LABEL]: lighthouse.audits[PERF_METRICS.FIRST_CONTENTFUL_PAINT.KEY],
-        [PERF_METRICS.FIRST_INPUT_DELAY.LABEL]: lighthouse.audits[PERF_METRICS.FIRST_INPUT_DELAY.KEY],
-        [PERF_METRICS.SPEED_INDEX.LABEL]: lighthouse.audits[PERF_METRICS.SPEED_INDEX.KEY],
-        [PERF_METRICS.TIME_TO_INTERACTIVE.LABEL]: lighthouse.audits[PERF_METRICS.TIME_TO_INTERACTIVE.KEY]
+        [PERF_METRICS.FIRST_BYTE.ID]: lighthouse.audits[PERF_METRICS.FIRST_BYTE.ID],
+        [PERF_METRICS.FIRST_CONTENTFUL_PAINT.ID]: lighthouse.audits[PERF_METRICS.FIRST_CONTENTFUL_PAINT.ID],
+        [PERF_METRICS.FIRST_INPUT_DELAY.ID]: lighthouse.audits[PERF_METRICS.FIRST_INPUT_DELAY.ID],
+        [PERF_METRICS.SPEED_INDEX.ID]: lighthouse.audits[PERF_METRICS.SPEED_INDEX.ID],
+        [PERF_METRICS.TIME_TO_INTERACTIVE.ID]: lighthouse.audits[PERF_METRICS.TIME_TO_INTERACTIVE.ID]
       };
       
       const screenshotDetails = lighthouse.audits['screenshot-thumbnails'].details;

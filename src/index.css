@@ -24,6 +24,14 @@
   --typography-font-weight-regular: 400;
   --typography-font-weight-medium: 500;
   --typography-font-weight-bold: 700;
+  --palette-blue-500: #2196f3; /* First Byte */
+  --palette-amber-500: #ffc107; /* First Paint */
+  --palette-green-500: #4caf50; /* First Contentful Paint */
+  --palette-purple-500: #9c27b0; /* Largest Contentful Paint */
+  --palette-teal-500: #009688; /* First Input Delay */
+  --palette-orange-500: #ff9800; /* Speed Index */
+  --palette-pink-500: #e91e63; /* Time To Interactive */
+  --palette-cyan-500: #00bcd4; /* Cumulative Layout Shift */
 }
 
 * {

@@ -1,11 +1,9 @@
 
 .filmstrips {
   display: flex;
-  justify-content: center;
-  margin: 120px auto;
-  max-width: 1400px;
+  padding: 120px 0;
 }
 
 .filmstrips > div {
-  flex: 1;
+  flex: 1 1 0px;
 }
