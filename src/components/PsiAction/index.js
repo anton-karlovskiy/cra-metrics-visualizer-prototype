@@ -18,7 +18,8 @@ const PsiAction = ({ updateLighthouseInfo }) => {
     try {
       const url = inputs[PSI_URL];
       const stragegy = STRATEGY.MOBILE; // TODO: should be a toggle
-      const psiEndpoint = `${PSI_ENDPOINT}?url=${url}&strategy=${stragegy}`;
+      const category = 'performance';
+      const psiEndpoint = `${PSI_ENDPOINT}?url=${url}&category=${category}&strategy=${stragegy}`;
       const response = await fetch(psiEndpoint);
       const responseJson = await response.json();
       const lighthouse = responseJson.lighthouseResult;
