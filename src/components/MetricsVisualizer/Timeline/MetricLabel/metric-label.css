@@ -2,5 +2,9 @@
 .metric-label {
   position: absolute;
   display: inline-block;
+}
+
+.metric-label-inside {
+  position: relative;
   padding: 6px 16px;
 }

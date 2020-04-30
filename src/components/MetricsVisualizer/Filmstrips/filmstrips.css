@@ -1,7 +1,6 @@
 
 .filmstrips {
   display: flex;
-  padding: 120px 0;
 }
 
 .filmstrips > div {

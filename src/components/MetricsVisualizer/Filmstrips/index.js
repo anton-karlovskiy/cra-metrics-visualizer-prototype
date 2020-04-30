@@ -11,9 +11,12 @@ const Filmstrips = ({
     items = [],
     intrinsicWidth,
     intrinsicHeight
-  } = {}
+  } = {},
+  ...rest
 }) => (
-  <div className='filmstrips'>
+  <div
+    {...rest}
+    className='filmstrips'>
     {items.map((item, index) => (
       <div
         key={item.timing}
