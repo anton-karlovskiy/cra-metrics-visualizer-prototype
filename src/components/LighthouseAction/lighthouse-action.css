@@ -1,8 +1,17 @@
 
 .lighthouse-action {
+  position: relative;
   padding: 48px 0 24px;
   background-color: var(--palette-bg-paper);
   box-shadow: var(--shadows-4);
+}
+
+.lighthouse-action .annotation {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  color: var(--palette-pink-500);
+  transform: translate(-50%, -50%);
 }
 
 .lighthouse-action .url-and-analyze {

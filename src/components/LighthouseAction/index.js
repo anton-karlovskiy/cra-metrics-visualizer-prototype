@@ -12,15 +12,17 @@ const LIGHTHOUSE_URL = 'lighthouse-url';
 
 const LighthouseAction = ({ updateLighthouseInfo }) => {
   const [loading, setLoading] = useState(false);
+  const [runtimeError, setRuntimeError] = useState({});
 
   const submitCallback = async () => {
     setLoading(true);
+    let lhr;
     try {
       const url = inputs[LIGHTHOUSE_URL];
       const strategy = STRATEGY.MOBILE; // TODO: should be a toggle
       const lighthouseEndpoint = `http://localhost:5000${LIGHTHOUSE_ENDPOINT}?url=${url}&strategy=${strategy}`; // TODO: fix url
       const response = await fetch(lighthouseEndpoint);
-      const lhr = await response.json();
+      lhr = await response.json();
 
       console.log('[LighthouseAction] lhr => ', lhr);
       console.log('[LighthouseAction] => final-screenshot => ', lhr.audits['final-screenshot']);
@@ -52,6 +54,11 @@ const LighthouseAction = ({ updateLighthouseInfo }) => {
         metrics: {},
         screenshotDetails: {}
       });
+      if (lhr.runtimeError) {
+        setRuntimeError(lhr.runtimeError);
+      } else {
+        setRuntimeError({});
+      }
     }
     setLoading(false);
   };
@@ -60,6 +67,7 @@ const LighthouseAction = ({ updateLighthouseInfo }) => {
   
   return (
     <div className='lighthouse-action'>
+      {runtimeError.message && <p className='annotation'>{runtimeError.message}</p>}
       <form
         className='url-and-analyze'
         onSubmit={onSubmitHandler}>
