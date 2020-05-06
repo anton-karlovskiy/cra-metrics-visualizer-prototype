@@ -1,14 +1,14 @@
 
 .lighthouse-action {
   position: relative;
-  padding: 48px 0 24px;
+  padding: 64px 0 36px;
   background-color: var(--palette-bg-paper);
   box-shadow: var(--shadows-4);
 }
 
 .lighthouse-action .annotation {
   position: absolute;
-  top: 20px;
+  top: 192px;
   left: 50%;
   color: var(--palette-pink-500);
   transform: translate(-50%, -50%);
