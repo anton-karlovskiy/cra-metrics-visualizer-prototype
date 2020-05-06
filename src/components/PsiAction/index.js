@@ -5,7 +5,7 @@ import ContainedButton from 'components/UI/ContainedButton';
 import TextField from 'components/UI/TextField';
 import useForm from 'utils/hooks/use-form';
 import { getImageDimensions } from 'utils/helpers';
-import { METRICS, PSI_ENDPOINT, STRATEGY } from 'utils/constants';
+import { METRICS, LIGHTHOUSE_ENDPOINT, STRATEGY } from 'utils/constants';
 import './psi-action.css';
 
 const PSI_URL = 'psi-url';
@@ -17,39 +17,37 @@ const PsiAction = ({ updateLighthouseInfo }) => {
     setLoading(true);
     try {
       const url = inputs[PSI_URL];
-      const stragegy = STRATEGY.MOBILE; // TODO: should be a toggle
-      const category = 'performance';
-      const psiEndpoint = `${PSI_ENDPOINT}?url=${url}&category=${category}&strategy=${stragegy}`;
-      const response = await fetch(psiEndpoint);
-      const responseJson = await response.json();
-      const lighthouse = responseJson.lighthouseResult;
+      const strategy = STRATEGY.MOBILE; // TODO: should be a toggle
+      const lighthouseEndpoint = `http://localhost:5000${LIGHTHOUSE_ENDPOINT}?url=${url}&strategy=${strategy}`; // TODO: fix url
+      const response = await fetch(lighthouseEndpoint);
+      const lhr = await response.json();
 
       // ray test touch <
-      const finalScreenshot = lighthouse.audits['final-screenshot'];
+      console.log('ray : ***** lhr => ', lhr);
+      const finalScreenshot = lhr.audits['final-screenshot'];
       console.log('ray : ***** finalScreenshot => ', finalScreenshot);
       // ray test touch >
 
       const metrics = {
-        [METRICS.FIRST_BYTE.ID]: lighthouse.audits[METRICS.FIRST_BYTE.ID],
-        [METRICS.FIRST_CONTENTFUL_PAINT.ID]: lighthouse.audits[METRICS.FIRST_CONTENTFUL_PAINT.ID],
-        [METRICS.FIRST_INPUT_DELAY.ID]: lighthouse.audits[METRICS.FIRST_INPUT_DELAY.ID],
-        [METRICS.SPEED_INDEX.ID]: lighthouse.audits[METRICS.SPEED_INDEX.ID],
-        [METRICS.TIME_TO_INTERACTIVE.ID]: lighthouse.audits[METRICS.TIME_TO_INTERACTIVE.ID]
+        [METRICS.FIRST_BYTE.ID]: lhr.audits[METRICS.FIRST_BYTE.ID],
+        [METRICS.FIRST_CONTENTFUL_PAINT.ID]: lhr.audits[METRICS.FIRST_CONTENTFUL_PAINT.ID],
+        [METRICS.FIRST_INPUT_DELAY.ID]: lhr.audits[METRICS.FIRST_INPUT_DELAY.ID],
+        [METRICS.SPEED_INDEX.ID]: lhr.audits[METRICS.SPEED_INDEX.ID],
+        [METRICS.TIME_TO_INTERACTIVE.ID]: lhr.audits[METRICS.TIME_TO_INTERACTIVE.ID]
       };
       
-      const screenshotDetails = lighthouse.audits['screenshot-thumbnails'].details;
+      const screenshotDetails = lhr.audits['screenshot-thumbnails'].details;
+      // ray test touch <
+      console.log('ray : ***** metrics, screenshotDetails => ', metrics, screenshotDetails);
+      // ray test touch >
       const dimensions = await getImageDimensions(screenshotDetails.items[0].data);
       screenshotDetails.intrinsicWidth = dimensions.width;
       screenshotDetails.intrinsicHeight = dimensions.height;
 
-      // ray test touch <
-      console.log('ray : ***** metrics, screenshotDetails => ', metrics, screenshotDetails);
-      // ray test touch >
       updateLighthouseInfo({
         metrics,
         screenshotDetails
       });
-      
     } catch (error) {
       console.log('[PsiAction submitCallback] error => ', error);
     }

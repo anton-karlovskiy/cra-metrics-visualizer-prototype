@@ -1,7 +1,7 @@
 
 const APP_NAME = 'Metrics Visualizer';
 const LOGO_URL = 'https://www.gstatic.com/images/icons/material/product/2x/pagespeed_64dp.png';
-const PSI_ENDPOINT = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed';
+const LIGHTHOUSE_ENDPOINT ='/lighthouse';
 
 const METRICS = {
   FIRST_BYTE: {
@@ -54,7 +54,7 @@ const STRATEGY = {
 export {
   APP_NAME,
   LOGO_URL,
-  PSI_ENDPOINT,
+  LIGHTHOUSE_ENDPOINT,
   METRICS,
   STRATEGY
 };
