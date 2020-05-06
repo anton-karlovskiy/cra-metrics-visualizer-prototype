@@ -8,7 +8,7 @@ import { getImageDimensions } from 'utils/helpers';
 import { METRICS, LIGHTHOUSE_ENDPOINT, STRATEGY } from 'utils/constants';
 import './lighthouse-action.css';
 
-const PSI_URL = 'psi-url';
+const LIGHTHOUSE_URL = 'lighthouse-url';
 
 const LighthouseAction = ({ updateLighthouseInfo }) => {
   const [loading, setLoading] = useState(false);
@@ -16,7 +16,7 @@ const LighthouseAction = ({ updateLighthouseInfo }) => {
   const submitCallback = async () => {
     setLoading(true);
     try {
-      const url = inputs[PSI_URL];
+      const url = inputs[LIGHTHOUSE_URL];
       const strategy = STRATEGY.MOBILE; // TODO: should be a toggle
       const lighthouseEndpoint = `http://localhost:5000${LIGHTHOUSE_ENDPOINT}?url=${url}&strategy=${strategy}`; // TODO: fix url
       const response = await fetch(lighthouseEndpoint);
@@ -62,10 +62,12 @@ const LighthouseAction = ({ updateLighthouseInfo }) => {
         {/* TODO: url making behavior as PageSpeed Insights does */}
         <TextField
           id='url'
-          type='text'
-          name={PSI_URL}
+          type='url'
+          pattern='^(http|https)://.*'
+          required
+          name={LIGHTHOUSE_URL}
           inputMode='url'
-          value={inputs[PSI_URL]}
+          value={inputs[LIGHTHOUSE_URL]}
           onChange={inputChangeHandler}
           placeholder='Enter a web page URL'
           aria-label='Enter a web page URL' />

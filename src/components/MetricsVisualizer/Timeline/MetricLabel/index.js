@@ -21,7 +21,8 @@ const MetricLabel = ({
   const lineHeight = topOffset + distanceBetweenFilmstripsAndTimeline;
 
   // TODO: some websites throw errors e.g. upwork.com & twitter.com
-  if (metric.error) {
+  if (metric.errorMessage) {
+    console.log('[MetricLabel] metric error => ', metric.errorMessage)
     return null;
   }
 
