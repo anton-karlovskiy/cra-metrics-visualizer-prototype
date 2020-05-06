@@ -10,7 +10,7 @@ import './psi-action.css';
 
 const PSI_URL = 'psi-url';
 
-const PsiAction = ({ updateLighthouseInfo }) => {
+const LighthouseAction = ({ updateLighthouseInfo }) => {
   const [loading, setLoading] = useState(false);
 
   const submitCallback = async () => {
@@ -48,7 +48,7 @@ const PsiAction = ({ updateLighthouseInfo }) => {
         screenshotDetails
       });
     } catch (error) {
-      console.log('[PsiAction submitCallback] error => ', error);
+      console.log('[LighthouseAction submitCallback] error => ', error);
     }
     setLoading(false);
   };
@@ -81,4 +81,4 @@ const PsiAction = ({ updateLighthouseInfo }) => {
   );
 };
 
-export default PsiAction;
+export default LighthouseAction;

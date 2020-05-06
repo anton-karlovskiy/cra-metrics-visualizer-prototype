@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 import Header from 'components/Header';
 import Footer from 'components/Footer';
-import PsiAction from 'components/PsiAction';
+import LighthouseAction from 'components/LighthouseAction';
 import MetricsVisualizer from 'components/MetricsVisualizer';
 import './App.css';
 
@@ -21,7 +21,7 @@ const App = () => {
     <>
       <Header />
       <main>
-        <PsiAction updateLighthouseInfo={updateLighthouseInfoHandler} />
+        <LighthouseAction updateLighthouseInfo={updateLighthouseInfoHandler} />
         <MetricsVisualizer lighthouseInfo={lighthouseInfo} />
       </main>
       {/* TODO: double check if we really need */}
