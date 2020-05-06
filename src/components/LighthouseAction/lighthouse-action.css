@@ -1,16 +1,16 @@
 
-.psi-action {
+.lighthouse-action {
   padding: 48px 0 24px;
   background-color: var(--palette-bg-paper);
   box-shadow: var(--shadows-4);
 }
 
-.psi-action .url-and-analyze {
+.lighthouse-action .url-and-analyze {
   display: flex;
   justify-content: center;
 }
 
-.psi-action input[id=url] {
+.lighthouse-action input[id=url] {
   border: none;
   padding: 0 16px;
   font-size: var(--typography-body2-font-size);

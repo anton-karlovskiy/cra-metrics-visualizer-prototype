@@ -6,7 +6,7 @@ import TextField from 'components/UI/TextField';
 import useForm from 'utils/hooks/use-form';
 import { getImageDimensions } from 'utils/helpers';
 import { METRICS, LIGHTHOUSE_ENDPOINT, STRATEGY } from 'utils/constants';
-import './psi-action.css';
+import './lighthouse-action.css';
 
 const PSI_URL = 'psi-url';
 
@@ -37,7 +37,7 @@ const LighthouseAction = ({ updateLighthouseInfo }) => {
 
       console.log('[LighthouseAction] metrics => ', metrics);
       console.log('[LighthouseAction] screenshotDetails => ', screenshotDetails);
-      
+
       const dimensions = await getImageDimensions(screenshotDetails.items[0].data);
       screenshotDetails.intrinsicWidth = dimensions.width;
       screenshotDetails.intrinsicHeight = dimensions.height;
@@ -55,7 +55,7 @@ const LighthouseAction = ({ updateLighthouseInfo }) => {
   const { inputs, inputChangeHandler, onSubmitHandler } = useForm(submitCallback);
   
   return (
-    <div className='psi-action'>
+    <div className='lighthouse-action'>
       <form
         className='url-and-analyze'
         onSubmit={onSubmitHandler}>
