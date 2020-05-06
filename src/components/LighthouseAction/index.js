@@ -15,6 +15,7 @@ const LighthouseAction = ({ updateLighthouseInfo }) => {
   const [runtimeError, setRuntimeError] = useState({});
 
   const submitCallback = async () => {
+    setRuntimeError({});
     setLoading(true);
     let lhr;
     try {
@@ -54,12 +55,12 @@ const LighthouseAction = ({ updateLighthouseInfo }) => {
         metrics: {},
         screenshotDetails: {}
       });
-      if (lhr.runtimeError) {
-        setRuntimeError(lhr.runtimeError);
-      } else {
-        setRuntimeError({});
-      }
     }
+
+    if (lhr.runtimeError) {
+      setRuntimeError(lhr.runtimeError);
+    }
+    
     setLoading(false);
   };
 
