@@ -19,6 +19,7 @@ const MetricsVisualizer = ({
       style={{padding: `${DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE}px 0`}}
       screenshotDetails={screenshotDetails} />
     <Timeline
+      scale={screenshotDetails.scale}
       distanceBetweenFilmstripsAndTimeline={DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE}
       metrics={metrics} />
   </div>

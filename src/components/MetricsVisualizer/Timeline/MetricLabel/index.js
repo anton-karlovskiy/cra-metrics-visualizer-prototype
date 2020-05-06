@@ -11,6 +11,7 @@ const METRIC_LABEL = {
 };
 
 const MetricLabel = ({
+  scale,
   metric,
   sequenceNumber,
   distanceBetweenFilmstripsAndTimeline
@@ -18,24 +19,34 @@ const MetricLabel = ({
   const targetMetric = Object.values(METRICS).find(item => item.ID === metric.id);
   const topOffset = sequenceNumber * (METRIC_LABEL.HEIGHT + METRIC_LABEL.VERTICAL_SPACING);
 
+  // ray test touch <
+  if (metric.id === METRICS.FIRST_INPUT_DELAY.ID) {
+    return null;
+  }
+
+  if (metric.error) {
+    return null;
+  }
+  // ray test touch >
+
   return (
     <div
       style={{
         backgroundColor: `var(${targetMetric.COLOR})`,
         height: `${METRIC_LABEL.HEIGHT}px`,
         top: `${topOffset}px`,
-        left: `${sequenceNumber * 12}%` // TODO: hardcoded
+        left: `${(metric.numericValue / scale * 100).toFixed(2)}%`
       }}
       className='metric-label'>
       <div className='metric-label-inside'>
-        {targetMetric.LABEL}
+        {`${targetMetric.LABEL}: ${Math.floor(metric.numericValue)}ms`}
         <VerticalLine
           width={1}
           height={topOffset + distanceBetweenFilmstripsAndTimeline}
           color={targetMetric.COLOR}
           style={{
             position: 'absolute',
-            right: '20%',
+            left: 0,
             bottom: `${METRIC_LABEL.HEIGHT}px`
           }} />
       </div>
