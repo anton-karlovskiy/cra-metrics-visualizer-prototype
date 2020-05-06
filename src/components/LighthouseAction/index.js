@@ -48,6 +48,10 @@ const LighthouseAction = ({ updateLighthouseInfo }) => {
       });
     } catch (error) {
       console.log('[LighthouseAction submitCallback] error => ', error);
+      updateLighthouseInfo({
+        metrics: {},
+        screenshotDetails: {}
+      });
     }
     setLoading(false);
   };
