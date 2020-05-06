@@ -21,15 +21,8 @@ const LighthouseAction = ({ updateLighthouseInfo }) => {
     try {
       const url = inputs[LIGHTHOUSE_URL];
       const strategy = STRATEGY.MOBILE; // TODO: should be a toggle
-      const lighthouseEndpoint = `http://localhost:5000${LIGHTHOUSE_ENDPOINT}?url=${url}&strategy=${strategy}`; // TODO: fix url
-      // ray test touch <
-      const response = await fetch(lighthouseEndpoint, {
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        mode: 'cors'
-      });
-      // ray test touch >
+      const lighthouseEndpoint = `${LIGHTHOUSE_ENDPOINT}?url=${url}&strategy=${strategy}`; // TODO: fix url
+      const response = await fetch(lighthouseEndpoint);
       lhr = await response.json();
 
       console.log('[LighthouseAction] lhr => ', lhr);
