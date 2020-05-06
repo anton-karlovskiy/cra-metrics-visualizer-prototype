@@ -24,8 +24,7 @@ const PsiAction = ({ updateLighthouseInfo }) => {
 
       // ray test touch <
       console.log('ray : ***** lhr => ', lhr);
-      const finalScreenshot = lhr.audits['final-screenshot'];
-      console.log('ray : ***** finalScreenshot => ', finalScreenshot);
+      console.log('ray : ***** finalScreenshot => ', lhr.audits['final-screenshot']);
       // ray test touch >
 
       const metrics = {

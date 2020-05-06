@@ -19,38 +19,35 @@ const MetricLabel = ({
   const targetMetric = Object.values(METRICS).find(item => item.ID === metric.id);
   const topOffset = sequenceNumber * (METRIC_LABEL.HEIGHT + METRIC_LABEL.VERTICAL_SPACING);
 
-  // ray test touch <
-  if (metric.id === METRICS.FIRST_INPUT_DELAY.ID) {
-    return null;
-  }
-
+  // TODO: some websites throw errors e.g. upwork.com & twitter.com
   if (metric.error) {
     return null;
   }
-  // ray test touch >
 
   return (
-    <div
+    <VerticalLine
+      width={1}
+      height={topOffset + distanceBetweenFilmstripsAndTimeline}
+      color={targetMetric.COLOR}
       style={{
-        backgroundColor: `var(${targetMetric.COLOR})`,
-        height: `${METRIC_LABEL.HEIGHT}px`,
-        top: `${topOffset}px`,
+        position: 'absolute',
+        top: `-${distanceBetweenFilmstripsAndTimeline}px`,
         left: `${(metric.numericValue / scale * 100).toFixed(2)}%`
-      }}
-      className='metric-label'>
-      <div className='metric-label-inside'>
-        {`${targetMetric.LABEL}: ${Math.floor(metric.numericValue)}ms`}
-        <VerticalLine
-          width={1}
-          height={topOffset + distanceBetweenFilmstripsAndTimeline}
-          color={targetMetric.COLOR}
+      }}>
+      <div className='vertical-line-inside'>
+        <div
           style={{
+            backgroundColor: `var(${targetMetric.COLOR})`,
+            height: `${METRIC_LABEL.HEIGHT}px`,
             position: 'absolute',
-            left: 0,
-            bottom: `${METRIC_LABEL.HEIGHT}px`
-          }} />
+            top: topOffset + distanceBetweenFilmstripsAndTimeline,
+            right: '-20px'
+          }}
+          className='metric-label'>
+          {`${targetMetric.LABEL}: ${Math.floor(metric.numericValue)}ms`}
+        </div>
       </div>
-    </div>
+    </VerticalLine>
   );
 };
 

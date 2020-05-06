@@ -1,10 +1,10 @@
 
-.metric-label {
-  position: absolute;
-  display: inline-block;
+.vertical-line-inside {
+  position: relative;
 }
 
-.metric-label-inside {
-  position: relative;
+.metric-label {
+  display: inline-block;
   padding: 6px 16px;
+  white-space: nowrap;
 }
