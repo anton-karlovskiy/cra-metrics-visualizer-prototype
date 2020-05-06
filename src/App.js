@@ -24,7 +24,6 @@ const App = () => {
         <LighthouseAction updateLighthouseInfo={updateLighthouseInfoHandler} />
         <MetricsVisualizer lighthouseInfo={lighthouseInfo} />
       </main>
-      {/* TODO: double check if we really need */}
       <Footer />
     </>
   );
