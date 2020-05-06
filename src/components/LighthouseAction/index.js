@@ -22,10 +22,8 @@ const LighthouseAction = ({ updateLighthouseInfo }) => {
       const response = await fetch(lighthouseEndpoint);
       const lhr = await response.json();
 
-      // ray test touch <
-      console.log('ray : ***** lhr => ', lhr);
-      console.log('ray : ***** finalScreenshot => ', lhr.audits['final-screenshot']);
-      // ray test touch >
+      console.log('[LighthouseAction] lhr => ', lhr);
+      console.log('[LighthouseAction] => final-screenshot => ', lhr.audits['final-screenshot']);
 
       const metrics = {
         [METRICS.FIRST_BYTE.ID]: lhr.audits[METRICS.FIRST_BYTE.ID],
@@ -36,9 +34,10 @@ const LighthouseAction = ({ updateLighthouseInfo }) => {
       };
       
       const screenshotDetails = lhr.audits['screenshot-thumbnails'].details;
-      // ray test touch <
-      console.log('ray : ***** metrics, screenshotDetails => ', metrics, screenshotDetails);
-      // ray test touch >
+
+      console.log('[LighthouseAction] metrics => ', metrics);
+      console.log('[LighthouseAction] screenshotDetails => ', screenshotDetails);
+      
       const dimensions = await getImageDimensions(screenshotDetails.items[0].data);
       screenshotDetails.intrinsicWidth = dimensions.width;
       screenshotDetails.intrinsicHeight = dimensions.height;
