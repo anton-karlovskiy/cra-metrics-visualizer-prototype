@@ -29,15 +29,15 @@ const lighthouseFromPuppeteer = async (url, options, config = null) => {
 
   // ray test touch <
   // Connect chrome-launcher to puppeteer
-  // const resp = await util.promisify(request)(`http://localhost:${options.port}/json/version`);
-  // const { webSocketDebuggerUrl } = JSON.parse(resp.body);
-  // const browser = await puppeteer.connect({browserWSEndpoint: webSocketDebuggerUrl});
+  const resp = await util.promisify(request)(`http://localhost:${options.port}/json/version`);
+  const { webSocketDebuggerUrl } = JSON.parse(resp.body);
+  const browser = await puppeteer.connect({browserWSEndpoint: webSocketDebuggerUrl});
   // ray test touch >
 
   // Run Lighthouse
   const { lhr } = await lighthouse(url, options, config);
   // ray test touch <
-  // await browser.disconnect();
+  await browser.disconnect();
   // ray test touch >
 
   try {
@@ -52,7 +52,16 @@ const lighthouseFromPuppeteer = async (url, options, config = null) => {
 const app = express();
 app.disable('x-powered-by');
 app.use(cors());
+// ray test touch <
+const allowCrossDomain = (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', "*");
+  res.header('Access-Control-Allow-Headers', "*");
+  next();
+};
+app.use(allowCrossDomain);
+// ray test touch >
 app.use(express.static(path.join(__dirname, 'build')));
+
 
 const PORT = process.env.PORT || 5000;
 
