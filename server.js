@@ -9,7 +9,7 @@ const lighthouse = require('lighthouse');
 const puppeteer = require('puppeteer');
 const request = require('request');
 const util = require('util');
-// ray tes ttouch >
+// ray test touch >
 const chromeLauncher = require('chrome-launcher');
 // ray test touch <
 const fs = require('fs');
