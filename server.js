@@ -12,9 +12,9 @@ const util = require('util');
 // ray test touch >
 const chromeLauncher = require('chrome-launcher');
 // ray test touch <
-const fs = require('fs');
-const http = require('http');
-const https = require('https');
+// const fs = require('fs');
+// const http = require('http');
+// const https = require('https');
 // ray test touch >
 
 
@@ -104,20 +104,20 @@ app.get('*', (req, res) => {
 });
 
 // ray test touch <
-// app.listen(
-//   PORT,
-//   () => {
-//     console.log(`Ready on http://localhost:${PORT}`);
-//   }
-// );
-const httpServer = http.createServer(app);
-const httpsServer = https.createServer({
-  key: fs.readFileSync('sslcert/server.key'),
-  cert: fs.readFileSync('sslcert/server.cert')
-}, app);
-httpServer.listen(PORT + 1);
-httpsServer.listen(PORT,
+app.listen(
+  PORT,
   () => {
-  console.log(`Ready on http://localhost:${PORT}`);
-});
+    console.log(`Ready on http://localhost:${PORT}`);
+  }
+);
+// const httpServer = http.createServer(app);
+// const httpsServer = https.createServer({
+//   key: fs.readFileSync('sslcert/server.key'),
+//   cert: fs.readFileSync('sslcert/server.cert')
+// }, app);
+// httpServer.listen(PORT + 1);
+// httpsServer.listen(PORT,
+//   () => {
+//   console.log(`Ready on http://localhost:${PORT}`);
+// });
 // ray test touch >
