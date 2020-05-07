@@ -1,6 +1,6 @@
 
 // ray test touch <
-const DEV_SERVER_URL = 'http://localhost:5000';
+const DEV_SERVER_URL = 'https://localhost:5000';
 const PROD_SERVER_URL = '';
 
 export {
