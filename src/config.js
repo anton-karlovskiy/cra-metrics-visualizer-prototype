@@ -1,7 +1,7 @@
 
 // ray test touch <
 const DEV_SERVER_URL = 'http://localhost:5000';
-const PROD_SERVER_URL = 'https://anton-karlovskiy-cra-metrics-visualizer.glitch.me';
+const PROD_SERVER_URL = '';
 
 export {
   DEV_SERVER_URL,

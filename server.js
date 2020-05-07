@@ -5,11 +5,13 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const lighthouse = require('lighthouse');
-const puppeteer = require('puppeteer');
-
+// ray test touch <
+// const puppeteer = require('puppeteer');
+// const request = require('request');
+// const util = require('util');
+// ray tes ttouch >
 const chromeLauncher = require('chrome-launcher');
-const request = require('request');
-const util = require('util');
+
 
 // TODO: optimize with https://github.com/GoogleChrome/lighthouse/blob/master/docs/readme.md#performance-only-lighthouse-run
 const options = {
@@ -25,14 +27,18 @@ const lighthouseFromPuppeteer = async (url, options, config = null) => {
   const chrome = await chromeLauncher.launch(options);
   options.port = chrome.port;
 
+  // ray test touch <
   // Connect chrome-launcher to puppeteer
-  const resp = await util.promisify(request)(`http://localhost:${options.port}/json/version`);
-  const { webSocketDebuggerUrl } = JSON.parse(resp.body);
-  const browser = await puppeteer.connect({browserWSEndpoint: webSocketDebuggerUrl});
+  // const resp = await util.promisify(request)(`http://localhost:${options.port}/json/version`);
+  // const { webSocketDebuggerUrl } = JSON.parse(resp.body);
+  // const browser = await puppeteer.connect({browserWSEndpoint: webSocketDebuggerUrl});
+  // ray test touch >
 
   // Run Lighthouse
   const { lhr } = await lighthouse(url, options, config);
-  await browser.disconnect();
+  // ray test touch <
+  // await browser.disconnect();
+  // ray test touch >
 
   try {
     await chrome.kill();

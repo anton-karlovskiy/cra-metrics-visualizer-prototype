@@ -26,6 +26,7 @@ const LighthouseAction = ({ updateLighthouseInfo }) => {
       const strategy = STRATEGY.MOBILE; // TODO: should be a toggle
       // ray test touch <
       const lighthouseEndpoint = `${process.env.REACT_APP_ENV === 'production' ? PROD_SERVER_URL : DEV_SERVER_URL}${LIGHTHOUSE_ENDPOINT}?url=${url}&strategy=${strategy}`; // TODO: fix url
+      console.log('ray : ***** lighthouseEndpoint => ', lighthouseEndpoint);
       // ray test touch >
       const response = await fetch(lighthouseEndpoint);
       lhr = await response.json();
