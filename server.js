@@ -11,6 +11,11 @@ const request = require('request');
 const util = require('util');
 // ray tes ttouch >
 const chromeLauncher = require('chrome-launcher');
+// ray test touch <
+const fs = require('fs');
+const http = require('http');
+const https = require('https');
+// ray test touch >
 
 
 // TODO: optimize with https://github.com/GoogleChrome/lighthouse/blob/master/docs/readme.md#performance-only-lighthouse-run
@@ -97,9 +102,22 @@ app.get(LIGHTHOUSE_ENDPOINT, async (req, res) => {
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
-app.listen(
-  PORT,
+
+// ray test touch <
+// app.listen(
+//   PORT,
+//   () => {
+//     console.log(`Ready on http://localhost:${PORT}`);
+//   }
+// );
+const httpServer = http.createServer(app);
+const httpsServer = https.createServer({
+  key: fs.readFileSync('sslcert/server.key'),
+  cert: fs.readFileSync('sslcert/server.cert')
+}, app);
+httpServer.listen(PORT + 1);
+httpsServer.listen(PORT,
   () => {
-    console.log(`Ready on http://localhost:${PORT}`);
-  }
-);
+  console.log(`Ready on http://localhost:${PORT}`);
+});
+// ray test touch >
