@@ -24,7 +24,10 @@ const options = {
   emulatedFormFactor: 'mobile',
   throttlingMethod: 'devtools',
   onlyCategories: ['performance'],
-  chromeFlags: ['--headless', '--disable-gpu']
+  chromeFlags: ['--headless', '--disable-gpu'],
+  // ray test touch <
+  chromePath: '/'
+  // ray test touch >
 };
 
 const lighthouseFromPuppeteer = async (url, options, config = null) => {
