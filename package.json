@@ -15,9 +15,11 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "dev": "react-scripts start",
-    "start": "nodemon server.js",
-    "build": "react-scripts build",
+    "dev-client": "react-scripts start",
+    "dev-server": "nodemon server.js",
+    "start": "node server.js",
+    "dev-build": "cross-env REACT_APP_ENV=development react-scripts build",
+    "prod-build": "cross-env REACT_APP_ENV=production react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy": "firebase deploy"
@@ -52,6 +54,7 @@
     ]
   },
   "devDependencies": {
+    "cross-env": "^7.0.2",
     "nodemon": "^2.0.3"
   }
 }

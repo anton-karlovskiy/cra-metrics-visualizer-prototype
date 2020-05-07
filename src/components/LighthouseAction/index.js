@@ -6,6 +6,9 @@ import TextField from 'components/UI/TextField';
 import useForm from 'utils/hooks/use-form';
 import { getImageDimensions } from 'utils/helpers';
 import { METRICS, LIGHTHOUSE_ENDPOINT, STRATEGY } from 'utils/constants';
+// ray test touch <
+import { DEV_SERVER_URL, PROD_SERVER_URL } from 'config';
+// ray test touch >
 import './lighthouse-action.css';
 
 const LIGHTHOUSE_URL = 'lighthouse-url';
@@ -21,7 +24,9 @@ const LighthouseAction = ({ updateLighthouseInfo }) => {
     try {
       const url = inputs[LIGHTHOUSE_URL];
       const strategy = STRATEGY.MOBILE; // TODO: should be a toggle
-      const lighthouseEndpoint = `http://localhost:5000${LIGHTHOUSE_ENDPOINT}?url=${url}&strategy=${strategy}`; // TODO: fix url
+      // ray test touch <
+      const lighthouseEndpoint = `${process.env.REACT_APP_ENV === 'production' ? PROD_SERVER_URL : DEV_SERVER_URL}${LIGHTHOUSE_ENDPOINT}?url=${url}&strategy=${strategy}`; // TODO: fix url
+      // ray test touch >
       const response = await fetch(lighthouseEndpoint);
       lhr = await response.json();
 
