@@ -53,12 +53,12 @@ const app = express();
 app.disable('x-powered-by');
 app.use(cors());
 // ray test touch <
-const allowCrossDomain = (req, res, next) => {
-  res.header('Access-Control-Allow-Origin', "*");
-  res.header('Access-Control-Allow-Headers', "*");
-  next();
-};
-app.use(allowCrossDomain);
+// const allowCrossDomain = (req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', "*");
+//   res.header('Access-Control-Allow-Headers', "*");
+//   next();
+// };
+// app.use(allowCrossDomain);
 // ray test touch >
 app.use(express.static(path.join(__dirname, 'build')));
 
