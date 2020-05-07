@@ -6,16 +6,11 @@ const path = require('path');
 const cors = require('cors');
 const lighthouse = require('lighthouse');
 // ray test touch <
-const puppeteer = require('puppeteer');
-const request = require('request');
-const util = require('util');
+// const puppeteer = require('puppeteer');
+// const request = require('request');
+// const util = require('util');
 // ray test touch >
 const chromeLauncher = require('chrome-launcher');
-// ray test touch <
-// const fs = require('fs');
-// const http = require('http');
-// const https = require('https');
-// ray test touch >
 
 
 // TODO: optimize with https://github.com/GoogleChrome/lighthouse/blob/master/docs/readme.md#performance-only-lighthouse-run
@@ -34,15 +29,15 @@ const lighthouseFromPuppeteer = async (url, options, config = null) => {
 
   // ray test touch <
   // Connect chrome-launcher to puppeteer
-  const resp = await util.promisify(request)(`http://localhost:${options.port}/json/version`);
-  const { webSocketDebuggerUrl } = JSON.parse(resp.body);
-  const browser = await puppeteer.connect({browserWSEndpoint: webSocketDebuggerUrl});
+  // const resp = await util.promisify(request)(`http://localhost:${options.port}/json/version`);
+  // const { webSocketDebuggerUrl } = JSON.parse(resp.body);
+  // const browser = await puppeteer.connect({browserWSEndpoint: webSocketDebuggerUrl});
   // ray test touch >
 
   // Run Lighthouse
   const { lhr } = await lighthouse(url, options, config);
   // ray test touch <
-  await browser.disconnect();
+  // await browser.disconnect();
   // ray test touch >
 
   try {
@@ -66,7 +61,6 @@ const allowCrossDomain = (req, res, next) => {
 app.use(allowCrossDomain);
 // ray test touch >
 app.use(express.static(path.join(__dirname, 'build')));
-
 
 const PORT = process.env.PORT || 5000;
 
@@ -103,21 +97,9 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-// ray test touch <
 app.listen(
   PORT,
   () => {
     console.log(`Ready on http://localhost:${PORT}`);
   }
 );
-// const httpServer = http.createServer(app);
-// const httpsServer = https.createServer({
-//   key: fs.readFileSync('sslcert/server.key'),
-//   cert: fs.readFileSync('sslcert/server.cert')
-// }, app);
-// httpServer.listen(PORT + 1);
-// httpsServer.listen(PORT,
-//   () => {
-//   console.log(`Ready on http://localhost:${PORT}`);
-// });
-// ray test touch >
