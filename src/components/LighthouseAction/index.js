@@ -10,17 +10,34 @@ import { DEV_SERVER_URL, PROD_SERVER_URL } from 'config';
 import './lighthouse-action.css';
 
 const LIGHTHOUSE_URL = 'lighthouse-url';
+const QUERY_PARAMS = {
+  URL: 'url'
+};
+
+const getURLQueryParam = () => {
+  const queryString = window.location.search;
+  const queryParams = new URLSearchParams(queryString);
+  const url = queryParams.get(QUERY_PARAMS.URL);
+
+  return url || '';
+};
+
+const setURLQueryParam = url => {
+  const encodedUrl = encodeURIComponent(url);
+  window.history.pushState(null, null, `/?${QUERY_PARAMS.URL}=${encodedUrl}`);
+};
 
 const LighthouseAction = ({ updateLighthouseInfo }) => {
   const [loading, setLoading] = useState(false);
   const [runtimeError, setRuntimeError] = useState({});
 
   const submitCallback = async () => {
+    const url = inputs[LIGHTHOUSE_URL];
+    setURLQueryParam(url);
     setRuntimeError({});
     setLoading(true);
     let lhr;
     try {
-      const url = inputs[LIGHTHOUSE_URL];
       const strategy = STRATEGY.MOBILE; // TODO: should be a toggle
       const lighthouseEndpoint = `${process.env.REACT_APP_ENV === 'production' ? PROD_SERVER_URL : DEV_SERVER_URL}${LIGHTHOUSE_ENDPOINT}?url=${url}&strategy=${strategy}`;
       const response = await fetch(lighthouseEndpoint);
@@ -69,7 +86,12 @@ const LighthouseAction = ({ updateLighthouseInfo }) => {
     inputs,
     inputChangeHandler,
     onSubmitHandler
-  } = useForm({submitCallback});
+  } = useForm({
+    submitCallback,
+    initialInputs: {
+      [LIGHTHOUSE_URL]: getURLQueryParam()
+    }
+  });
   
   return (
     <div className='lighthouse-action'>
