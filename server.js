@@ -5,46 +5,24 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const lighthouse = require('lighthouse');
-// ray test touch <
-// const puppeteer = require('puppeteer');
-// const request = require('request');
-// const util = require('util');
-// ray test touch >
-const chromeLauncher = require('chrome-launcher');
+const puppeteer = require('puppeteer');
+const { URL } = require('url');
 
-
-// TODO: optimize with https://github.com/GoogleChrome/lighthouse/blob/master/docs/readme.md#performance-only-lighthouse-run
-const options = {
-  logLevel: 'info',
-  emulatedFormFactor: 'mobile',
-  throttlingMethod: 'devtools',
-  onlyCategories: ['performance'],
-  chromeFlags: ['--headless', '--disable-gpu']
-};
-
-const lighthouseFromPuppeteer = async (url, options, config = null) => {
-  // Launch chrome using chrome-launcher
-  const chrome = await chromeLauncher.launch(options);
-  options.port = chrome.port;
-
-  // ray test touch <
-  // Connect chrome-launcher to puppeteer
-  // const resp = await util.promisify(request)(`http://localhost:${options.port}/json/version`);
-  // const { webSocketDebuggerUrl } = JSON.parse(resp.body);
-  // const browser = await puppeteer.connect({browserWSEndpoint: webSocketDebuggerUrl});
-  // ray test touch >
-
-  // Run Lighthouse
-  const { lhr } = await lighthouse(url, options, config);
-  // ray test touch <
-  // await browser.disconnect();
-  // ray test touch >
-
-  try {
-    await chrome.kill();
-  } catch (error) {
-    console.log('[lighthouseFromPuppeteer] error => ', error);
-  }
+const lighthouseFromPuppeteer = async (url, strategy = 'mobile') => {
+  const browser = await puppeteer.launch({
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
+  });
+  const { lhr } = await lighthouse(url, {
+    port: (new URL(browser.wsEndpoint())).port,
+    output: 'json',
+    logLevel: 'info',
+    emulatedFormFactor: strategy,
+    throttlingMethod: 'devtools',
+    onlyCategories: ['performance'],
+    chromeFlags: ['--headless', '--disable-gpu']
+  });
+  console.log(`Lighthouse scores: ${Object.values(lhr.categories).map(c => c.score).join(', ')}`);
+  await browser.close();
 
   return lhr;
 };
@@ -75,10 +53,7 @@ app.get(LIGHTHOUSE_ENDPOINT, async (req, res) => {
   }
 
   try {
-    const lhr = await lighthouseFromPuppeteer(url, {
-      ...options,
-      emulatedFormFactor: strategy
-    });
+    const lhr = await lighthouseFromPuppeteer(url, strategy);
   
     return res.status(200).send(lhr);
   } catch (error) {
@@ -88,6 +63,25 @@ app.get(LIGHTHOUSE_ENDPOINT, async (req, res) => {
       error
     });
   }
+});
+
+app.get('/puppeteer', async (req, res) => {
+  try {
+    const browser = await puppeteer.launch({
+      args: ['--no-sandbox']
+    });
+    const page = await browser.newPage();
+    await page.goto('https://developers.google.com/web/tools/puppeteer');
+    await page.screenshot({path: __dirname + '/puppeteer.png'});
+    await browser.close();
+    res.sendFile(__dirname + '/puppeteer.png');
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+app.get('/ping', (req, res) => {
+  return res.status(200).send('pong');
 });
 
 // need to declare a "catch all" route on your express server 
