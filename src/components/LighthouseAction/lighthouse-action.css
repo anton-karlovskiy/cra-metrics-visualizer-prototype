@@ -6,14 +6,6 @@
   box-shadow: var(--shadows-4);
 }
 
-.lighthouse-action .annotation {
-  position: absolute;
-  top: 192px;
-  left: 50%;
-  color: var(--palette-pink-500);
-  transform: translate(-50%, -50%);
-}
-
 .lighthouse-action .url-and-analyze {
   display: flex;
   justify-content: center;

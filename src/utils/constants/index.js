@@ -51,10 +51,15 @@ const STRATEGY = {
   DESKTOP: 'desktop'
 };
 
+const INPUT_NAMES = {
+  LIGHTHOUSE_URL: 'lighthouse-url'
+};
+
 export {
   APP_NAME,
   LOGO_URL,
   LIGHTHOUSE_ENDPOINT,
   METRICS,
-  STRATEGY
+  STRATEGY,
+  INPUT_NAMES
 };
