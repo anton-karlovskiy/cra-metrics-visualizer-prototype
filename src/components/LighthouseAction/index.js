@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import ContainedButton from 'components/UI/ContainedButton';
 import TextField from 'components/UI/TextField';
@@ -27,9 +27,26 @@ const setURLQueryParam = url => {
   window.history.pushState(null, null, `/?${QUERY_PARAMS.URL}=${encodedUrl}`);
 };
 
+const checkPageReloaded = () => {
+  // check for Navigation Timing API support
+  if (window.performance) {
+    return performance.navigation.type === 1;
+  } else {
+    console.info('[LighthouseAction checkPageReloaded] window.performance does not work on this browser');
+    return false;
+  }
+};
+
 const LighthouseAction = ({ updateLighthouseInfo }) => {
   const [loading, setLoading] = useState(false);
   const [runtimeError, setRuntimeError] = useState({});
+  useEffect(() => {
+    const pageReloaded = checkPageReloaded();
+    if (pageReloaded) {
+      submitCallback();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const submitCallback = async () => {
     const url = inputs[LIGHTHOUSE_URL];
@@ -75,7 +92,7 @@ const LighthouseAction = ({ updateLighthouseInfo }) => {
       });
     }
 
-    if (lhr.runtimeError) {
+    if (lhr && lhr.runtimeError) {
       setRuntimeError(lhr.runtimeError);
     }
 
