@@ -15,7 +15,7 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "dev-client": "react-scripts start",
+    "dev-client": "cross-env REACT_APP_ENV=development react-scripts start",
     "dev-server": "nodemon server.js",
     "start": "node server.js",
     "dev-build": "cross-env REACT_APP_ENV=development react-scripts build",

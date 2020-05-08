@@ -65,7 +65,11 @@ const LighthouseAction = ({ updateLighthouseInfo }) => {
     setLoading(false);
   };
 
-  const { inputs, inputChangeHandler, onSubmitHandler } = useForm(submitCallback);
+  const {
+    inputs,
+    inputChangeHandler,
+    onSubmitHandler
+  } = useForm({submitCallback});
   
   return (
     <div className='lighthouse-action'>
@@ -73,7 +77,6 @@ const LighthouseAction = ({ updateLighthouseInfo }) => {
       <form
         className='url-and-analyze'
         onSubmit={onSubmitHandler}>
-        {/* TODO: url making behavior as PageSpeed Insights does */}
         <TextField
           id='url'
           type='url'
