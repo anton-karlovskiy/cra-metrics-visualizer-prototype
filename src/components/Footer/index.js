@@ -5,7 +5,7 @@ import './footer.css';
 
 const Footer = ({ targetUrl }) => (
   <footer>
-    <div className='footer-inside'>
+    <div className='footer-links'>
       <a
         target='_blank'
         rel='noopener noreferrer'

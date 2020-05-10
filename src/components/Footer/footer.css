@@ -12,12 +12,13 @@ footer {
   align-items: center;
 }
 
-.footer-inside {
+.footer-links {
   margin: 0 auto;
 }
 
-.footer-inside a {
+.footer-links a {
   display: block;
   text-decoration: underline;
   margin-bottom: 12px;
+  color: var(--palette-teal-500);
 }
