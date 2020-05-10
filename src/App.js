@@ -106,7 +106,7 @@ const App = () => {
           runtimeError={runtimeError}
           lighthouseInfo={lighthouseInfo} />
       </main>
-      <Footer />
+      <Footer targetUrl={inputs[INPUT_NAMES.LIGHTHOUSE_URL]} />
     </>
   );
 };

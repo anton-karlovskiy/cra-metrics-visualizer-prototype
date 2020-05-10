@@ -5,8 +5,19 @@ footer {
   left: 0;
   right: 0;
   text-align: center;
-  height: 50px;
+  /* MEMO: should be matched with footer height */
+  height: 120px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+}
+
+.footer-inside {
+  margin: 0 auto;
+}
+
+.footer-inside a {
+  display: block;
+  text-decoration: underline;
+  margin-bottom: 12px;
 }

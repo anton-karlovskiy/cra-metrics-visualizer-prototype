@@ -5,6 +5,7 @@
 
 main {
   width: 100%;
-  padding-bottom: 50px;
+  /* MEMO: should be matched with footer height */
+  padding-bottom: 120px;
   margin-top: 48px;
 }
