@@ -35,6 +35,9 @@ const App = () => {
     const url = inputs[INPUT_NAMES.LIGHTHOUSE_URL];
     setURLQueryParam(url);
     setRuntimeError({});
+
+    if (!url) return;
+    
     setLoading(true);
     let lhr;
     try {
