@@ -22,7 +22,7 @@ const MetricLabel = ({
 
   // TODO: some websites throw errors e.g. upwork.com & twitter.com
   if (metric.errorMessage) {
-    console.log('[MetricLabel] metric error => ', metric.errorMessage)
+    console.log('[MetricLabel] metric error => ', metric.errorMessage);
     return null;
   }
 

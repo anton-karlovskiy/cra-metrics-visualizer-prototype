@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { memo } from 'react';
 
 import ProductLogoTitle from './ProductLogoTitle';
 import Navbar from './Navbar';
@@ -12,4 +12,4 @@ const Header = () => (
   </header>
 );
 
-export default Header;
+export default memo(Header);

@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { memo } from 'react';
 
 import Filmstrips from './Filmstrips';
 import Timeline from './Timeline';
@@ -29,4 +29,4 @@ const MetricsVisualizer = ({
   </div>
 );
 
-export default MetricsVisualizer;
+export default memo(MetricsVisualizer);
