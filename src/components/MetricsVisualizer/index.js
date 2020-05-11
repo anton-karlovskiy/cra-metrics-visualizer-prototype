@@ -8,7 +8,6 @@ import './metrics-visualizer.css';
 
 const DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE = 120;
 
-// TODO: could be lazy-loaded but what pattern?
 const MetricsVisualizer = ({
   runtimeError = {},
   lighthouseInfo: {

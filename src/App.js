@@ -1,10 +1,9 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import LighthouseAction from 'components/LighthouseAction';
-import MetricsVisualizer from 'components/MetricsVisualizer';
 import useForm from 'utils/hooks/use-form';
 import { getImageDimensions } from 'utils/helpers';
 import {
@@ -15,6 +14,10 @@ import {
 import { DEV_SERVER_URL, PROD_SERVER_URL } from 'config';
 import { METRICS, LIGHTHOUSE_ENDPOINT, STRATEGY, INPUT_NAMES } from 'utils/constants';
 import './App.css';
+
+const MetricsVisualizer = lazy(
+  () => import(/* webpackPrefetch: true, webpackChunkName: 'metrics-visualizer' */ 'components/MetricsVisualizer')
+);
 
 const App = () => {
   const [lighthouseInfo, setLighthouseInfo] = useState({
@@ -105,9 +108,11 @@ const App = () => {
           inputs={inputs}
           onSubmit={onSubmitHandler}
           inputChange={inputChangeHandler} />
-        <MetricsVisualizer
-          runtimeError={runtimeError}
-          lighthouseInfo={lighthouseInfo} />
+        <Suspense fallback='Loading...'>
+          <MetricsVisualizer
+            runtimeError={runtimeError}
+            lighthouseInfo={lighthouseInfo} />
+        </Suspense>
       </main>
       <Footer targetUrl={inputs[INPUT_NAMES.LIGHTHOUSE_URL]} />
     </>
