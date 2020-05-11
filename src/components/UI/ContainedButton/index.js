@@ -1,8 +1,11 @@
 
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 
-import LoadingSpinner from 'components/LoadingSpinner'; // TODO: lazy loading
 import './contained-button.css';
+
+const LoadingSpinner = lazy(
+  () => import(/* webpackPrefetch: true, webpackChunkName: 'loading-spinner' */ 'components/LoadingSpinner')
+);
 
 const ContainedButton = ({
   className,
@@ -20,11 +23,13 @@ const ContainedButton = ({
     {loading && (
       <>
         <>&nbsp;</>
-        <LoadingSpinner
-          width={2}
-          height={2}
-          borderWidth={.3}
-          margin={0} />
+        <Suspense fallback=''>
+          <LoadingSpinner
+            width={2}
+            height={2}
+            borderWidth={.3}
+            margin={0} />
+        </Suspense>
       </>
     )}
   </button>
