@@ -1,0 +1,15 @@
+
+.cls-vertical-bar {
+  position: absolute;
+  left: 50%;
+}
+
+.cls-vertical-bar-inside {
+  position: relative;
+}
+
+.cls-metric-label {
+  display: inline-block;
+  padding: 6px 16px;
+  white-space: nowrap;
+}

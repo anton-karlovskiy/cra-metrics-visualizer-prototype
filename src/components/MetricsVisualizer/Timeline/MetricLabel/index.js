@@ -1,24 +1,19 @@
 
 import React from 'react';
 
-import VerticalLine from 'components/UI/VerticalLine';
+import VerticalBar from 'components/UI/VerticalBar';
 import { METRICS } from 'utils/constants';
+import { METRIC_LABEL, DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE } from 'utils/styling';
 import './metric-label.css';
-
-const METRIC_LABEL = {
-  HEIGHT: 36,
-  VERTICAL_SPACING: 4
-};
 
 const MetricLabel = ({
   scale,
   metric,
-  sequenceIndex,
-  distanceBetweenFilmstripsAndTimeline
+  sequenceIndex
 }) => {
   const targetMetric = Object.values(METRICS).find(item => item.ID === metric.id);
   const topOffset = sequenceIndex * (METRIC_LABEL.HEIGHT + METRIC_LABEL.VERTICAL_SPACING);
-  const lineHeight = topOffset + distanceBetweenFilmstripsAndTimeline;
+  const barHeight = topOffset + DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE;
 
   // TODO: some websites throw errors e.g. upwork.com & twitter.com
   if (metric.errorMessage) {
@@ -27,23 +22,23 @@ const MetricLabel = ({
   }
 
   return (
-    <VerticalLine
+    <VerticalBar
       width={1}
-      height={lineHeight}
+      height={barHeight}
       color={targetMetric.COLOR}
       style={{
         position: 'absolute',
-        top: `-${distanceBetweenFilmstripsAndTimeline}px`,
+        top: `-${DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE}px`,
         left: `${(metric.numericValue / scale * 100).toFixed(2)}%`,
         zIndex: `-${sequenceIndex}`
       }}>
-      <div className='vertical-line-inside'>
+      <div className='vertical-bar-inside'>
         <div
           style={{
             backgroundColor: `var(${targetMetric.COLOR})`,
             height: `${METRIC_LABEL.HEIGHT}px`,
             position: 'absolute',
-            top: `${lineHeight}px`,
+            top: `${barHeight}px`,
             right: '-20px',
             zIndex: `-${sequenceIndex}`
           }}
@@ -51,7 +46,7 @@ const MetricLabel = ({
           {`${targetMetric.TITLE}: ${Math.floor(metric.numericValue)}ms`}
         </div>
       </div>
-    </VerticalLine>
+    </VerticalBar>
   );
 };
 

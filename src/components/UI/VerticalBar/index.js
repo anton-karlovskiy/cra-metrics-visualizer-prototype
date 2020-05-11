@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-const VerticalLine = ({
+const VerticalBar = ({
   width = 2,
   height = 50,
   color = '--palette-common-black',
@@ -16,4 +16,4 @@ const VerticalLine = ({
   {...rest} />
 );
 
-export default VerticalLine;
+export default VerticalBar;

@@ -1,8 +1,8 @@
 
 .error {
-  position: absolute;
-  top: 24px;
-  left: 50%;
   color: var(--palette-pink-500);
+  top: 24px;
+  position: absolute;
+  left: 50%;
   transform: translate(-50%, 0%);
 }
