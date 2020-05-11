@@ -57,7 +57,8 @@ const STRATEGY = {
 };
 
 const INPUT_NAMES = {
-  LIGHTHOUSE_URL: 'lighthouse-url'
+  LIGHTHOUSE_URL: 'lighthouse-url',
+  IS_DESKTOP_STRATEGY: 'is-desktop-strategy'
 };
 
 export {

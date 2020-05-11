@@ -4,6 +4,7 @@ import React, { memo } from 'react';
 import Filmstrips from './Filmstrips';
 import Timeline from './Timeline';
 import ClsMetric from './ClsMetric';
+import StrategySwitch from './StrategySwitch';
 import { METRICS } from 'utils/constants';
 import Error from 'components/Error';
 import {
@@ -21,6 +22,9 @@ const excludedMetrics = [
 ];
 
 const MetricsVisualizer = ({
+  loading,
+  inputs,
+  inputChange,
   runtimeError = {},
   lighthouseInfo: {
     metrics = {},
@@ -32,27 +36,33 @@ const MetricsVisualizer = ({
   const timingMetrics = Object.values(metrics).filter(metric => !excludedMetrics.includes(metric.id));
 
   return (
-    <div className='metrics-visualizer'>
-      <Error error={runtimeError} />  
-      <div
-        style={{padding: `0 ${METRICS_VISUALIZER_TIMING_SIDE_PADDING}px`}}
-        className='metrics-visualizer-timing'>
-        <Filmstrips
-          style={{padding: `${DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE}px 0`}}
-          screenshotDetails={screenshotDetails} />
-        <Timeline
-          scale={screenshotDetails.scale}
-          metrics={timingMetrics} />
+    <div>
+      <StrategySwitch
+        disabled={loading}
+        inputs={inputs}
+        inputChange={inputChange} />
+      <div className='metrics-visualizer'>
+        <Error error={runtimeError} />  
+        <div
+          style={{padding: `0 ${METRICS_VISUALIZER_TIMING_SIDE_PADDING}px`}}
+          className='metrics-visualizer-timing'>
+          <Filmstrips
+            style={{padding: `${DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE}px 0`}}
+            screenshotDetails={screenshotDetails} />
+          <Timeline
+            scale={screenshotDetails.scale}
+            metrics={timingMetrics} />
+        </div>
+        {clsMetric && (
+          <ClsMetric
+            clsMetric={clsMetric}
+            filmstrip={finalScreenshot}
+            style={{
+              padding: `${DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE}px ${METRICS_VISUALIZER_CLS_SIDE_PADDING}px`,
+              width: `calc((100% - ${METRICS_VISUALIZER_TIMING_SIDE_PADDING}px * 2 - ${METRICS_VISUALIZER_CLS_SIDE_PADDING}px * 2) / 11 + ${METRICS_VISUALIZER_CLS_SIDE_PADDING}px * 2)`
+            }} />
+        )}
       </div>
-      {clsMetric && (
-        <ClsMetric
-          clsMetric={clsMetric}
-          filmstrip={finalScreenshot}
-          style={{
-            padding: `${DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE}px ${METRICS_VISUALIZER_CLS_SIDE_PADDING}px`,
-            width: `calc((100% - ${METRICS_VISUALIZER_TIMING_SIDE_PADDING}px * 2 - ${METRICS_VISUALIZER_CLS_SIDE_PADDING}px * 2) / 11 + ${METRICS_VISUALIZER_CLS_SIDE_PADDING}px * 2)`
-          }} />
-      )}
     </div>
   );
 };

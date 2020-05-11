@@ -1,0 +1,20 @@
+
+.strategy-switch {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px;
+}
+
+.strategy-switch .strategy-label {
+  text-transform: capitalize;
+}
+
+.strategy-label.mobile {
+  margin-right: 8px;
+  color: var(--palette-green-500);
+}
+
+.strategy-label.desktop {
+  margin-left: 8px;
+  color: var(--palette-cyan-500);
+}

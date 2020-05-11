@@ -45,7 +45,10 @@ const App = () => {
     setLoading(true);
     let lhr;
     try {
-      const strategy = STRATEGY.MOBILE; // TODO: should be a toggle
+      const strategy =
+        inputs[INPUT_NAMES.IS_DESKTOP_STRATEGY]
+          ? STRATEGY.DESKTOP
+          : STRATEGY.MOBILE;
       const lighthouseEndpoint = `${process.env.REACT_APP_ENV === 'production' ? PROD_SERVER_URL : DEV_SERVER_URL}${LIGHTHOUSE_ENDPOINT}?url=${url}&strategy=${strategy}`;
       const response = await fetch(lighthouseEndpoint);
       lhr = await response.json();
@@ -102,7 +105,8 @@ const App = () => {
   } = useForm({
     submitCallback,
     initialInputs: {
-      [INPUT_NAMES.LIGHTHOUSE_URL]: getURLQueryParam()
+      [INPUT_NAMES.LIGHTHOUSE_URL]: getURLQueryParam(),
+      [INPUT_NAMES.IS_DESKTOP_STRATEGY]: false
     }
   });
 
@@ -117,6 +121,9 @@ const App = () => {
           inputChange={inputChangeHandler} />
         <Suspense fallback='Loading...'>
           <MetricsVisualizer
+            loading={loading}
+            inputs={inputs}
+            inputChange={inputChangeHandler}
             runtimeError={runtimeError}
             lighthouseInfo={lighthouseInfo} />
         </Suspense>
