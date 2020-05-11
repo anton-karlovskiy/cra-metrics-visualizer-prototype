@@ -17,8 +17,7 @@ import './metrics-visualizer.css';
 // TODO: metrics to be excluded
 const excludedMetrics = [
   METRICS.FIRST_INPUT_DELAY.ID,
-  METRICS.CUMULATIVE_LAYOUT_SHIFT.ID,
-  METRICS.TOTAL_BLOCKING_TIME.ID
+  METRICS.CUMULATIVE_LAYOUT_SHIFT.ID
 ];
 
 const MetricsVisualizer = ({

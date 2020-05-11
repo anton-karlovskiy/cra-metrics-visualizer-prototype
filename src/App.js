@@ -61,9 +61,9 @@ const App = () => {
         [METRICS.LARGEST_CONTENTFUL_PAINT.ID]: lhr.audits[METRICS.LARGEST_CONTENTFUL_PAINT.ID],
         [METRICS.FIRST_INPUT_DELAY.ID]: lhr.audits[METRICS.FIRST_INPUT_DELAY.ID],
         [METRICS.SPEED_INDEX.ID]: lhr.audits[METRICS.SPEED_INDEX.ID],
+        [METRICS.TOTAL_BLOCKING_TIME.ID]: lhr.audits[METRICS.TOTAL_BLOCKING_TIME.ID],
         [METRICS.TIME_TO_INTERACTIVE.ID]: lhr.audits[METRICS.TIME_TO_INTERACTIVE.ID],
-        [METRICS.CUMULATIVE_LAYOUT_SHIFT.ID]: lhr.audits[METRICS.CUMULATIVE_LAYOUT_SHIFT.ID],
-        [METRICS.TOTAL_BLOCKING_TIME.ID]: lhr.audits[METRICS.TOTAL_BLOCKING_TIME.ID]
+        [METRICS.CUMULATIVE_LAYOUT_SHIFT.ID]: lhr.audits[METRICS.CUMULATIVE_LAYOUT_SHIFT.ID]
       };
       const finalScreenshot = lhr.audits['final-screenshot'];
       console.log('[LighthouseAction] => final-screenshot => ', finalScreenshot);

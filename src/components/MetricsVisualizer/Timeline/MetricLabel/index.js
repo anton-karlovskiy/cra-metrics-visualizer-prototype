@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import VerticalBar from 'components/UI/VerticalBar';
 import { METRICS } from 'utils/constants';
@@ -7,11 +7,12 @@ import { METRIC_LABEL, DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE } from 'utils/st
 import './metric-label.css';
 
 const MetricLabel = ({
-  scale,
   metric,
-  sequenceIndex
+  sequenceIndex,
+  hidden,
+  barPos
 }) => {
-  const targetMetric = Object.values(METRICS).find(item => item.ID === metric.id);
+  const targetMetric = useMemo(() => Object.values(METRICS).find(item => item.ID === metric.id), [metric]);
   const topOffset = sequenceIndex * (METRIC_LABEL.HEIGHT + METRIC_LABEL.VERTICAL_SPACING);
   const barHeight = topOffset + DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE;
 
@@ -23,13 +24,13 @@ const MetricLabel = ({
 
   return (
     <VerticalBar
-      width={1}
+      width={hidden ? 0 : 1}
       height={barHeight}
       color={targetMetric.COLOR}
       style={{
         position: 'absolute',
         top: `-${DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE}px`,
-        left: `${(metric.numericValue / scale * 100).toFixed(2)}%`,
+        left: `${barPos}%`,
         zIndex: `-${sequenceIndex}`
       }}>
       <div className='vertical-bar-inside'>
