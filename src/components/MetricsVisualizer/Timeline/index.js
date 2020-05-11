@@ -6,7 +6,12 @@ import { METRICS } from 'utils/constants';
 import './timeline.css';
 
 // TODO: metrics to be excluded
-const excludedMetrics = [METRICS.FIRST_INPUT_DELAY.ID];
+const excludedMetrics = [
+  METRICS.FIRST_INPUT_DELAY.ID,
+  METRICS.CUMULATIVE_LAYOUT_SHIFT.ID,
+  METRICS.TOTAL_BLOCKING_TIME.ID,
+  METRICS.LARGEST_CONTENTFUL_PAINT
+];
 
 const Timeline = ({
   scale,

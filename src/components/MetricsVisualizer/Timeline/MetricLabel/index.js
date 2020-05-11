@@ -48,7 +48,7 @@ const MetricLabel = ({
             zIndex: `-${sequenceIndex}`
           }}
           className='metric-label'>
-          {`${targetMetric.LABEL}: ${Math.floor(metric.numericValue)}ms`}
+          {`${targetMetric.TITLE}: ${Math.floor(metric.numericValue)}ms`}
         </div>
       </div>
     </VerticalLine>
