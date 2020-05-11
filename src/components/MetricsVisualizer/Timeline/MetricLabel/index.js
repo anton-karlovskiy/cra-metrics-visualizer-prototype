@@ -13,11 +13,11 @@ const METRIC_LABEL = {
 const MetricLabel = ({
   scale,
   metric,
-  sequenceNumber,
+  sequenceIndex,
   distanceBetweenFilmstripsAndTimeline
 }) => {
   const targetMetric = Object.values(METRICS).find(item => item.ID === metric.id);
-  const topOffset = sequenceNumber * (METRIC_LABEL.HEIGHT + METRIC_LABEL.VERTICAL_SPACING);
+  const topOffset = sequenceIndex * (METRIC_LABEL.HEIGHT + METRIC_LABEL.VERTICAL_SPACING);
   const lineHeight = topOffset + distanceBetweenFilmstripsAndTimeline;
 
   // TODO: some websites throw errors e.g. upwork.com & twitter.com
@@ -35,7 +35,7 @@ const MetricLabel = ({
         position: 'absolute',
         top: `-${distanceBetweenFilmstripsAndTimeline}px`,
         left: `${(metric.numericValue / scale * 100).toFixed(2)}%`,
-        zIndex: `-${sequenceNumber}`
+        zIndex: `-${sequenceIndex}`
       }}>
       <div className='vertical-line-inside'>
         <div
@@ -45,7 +45,7 @@ const MetricLabel = ({
             position: 'absolute',
             top: `${lineHeight}px`,
             right: '-20px',
-            zIndex: `-${sequenceNumber}`
+            zIndex: `-${sequenceIndex}`
           }}
           className='metric-label'>
           {`${targetMetric.LABEL}: ${Math.floor(metric.numericValue)}ms`}

@@ -4,3 +4,7 @@
   margin: 0 auto;
   max-width: 1400px;
 }
+
+.metrics-visualizer-inside {
+  padding: 0 40px;
+}

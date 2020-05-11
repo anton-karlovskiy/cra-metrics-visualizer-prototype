@@ -12,17 +12,21 @@ const Timeline = ({
   scale,
   metrics,
   distanceBetweenFilmstripsAndTimeline
-}) => (
-  <div className='timeline'>
-    {Object.values(metrics).filter(metric => !excludedMetrics.includes(metric.id)).map((metric, index) => (
-      <MetricLabel
-        key={metric.id}
-        scale={scale}
-        sequenceNumber={index}
-        distanceBetweenFilmstripsAndTimeline={distanceBetweenFilmstripsAndTimeline}
-        metric={metric} />
-    ))}
-  </div>
-);
+}) => {
+  const validMetrics = Object.values(metrics).filter(metric => !excludedMetrics.includes(metric.id));
+
+  return (
+    <div className='timeline'>
+      {validMetrics.map((metric, index) => (
+        <MetricLabel
+          key={metric.id}
+          scale={scale}
+          sequenceIndex={index}
+          distanceBetweenFilmstripsAndTimeline={distanceBetweenFilmstripsAndTimeline}
+          metric={metric} />
+      ))}
+    </div>
+  );
+};
 
 export default Timeline;
