@@ -3,8 +3,13 @@
   position: relative;
   margin: 0 auto;
   max-width: 1400px;
+  display: flex;
 }
 
-.metrics-visualizer-inside {
-  padding: 0 40px;
+.metrics-visualizer-timing {
+  flex-grow: 1;
+}
+
+.metrics-visualizer-cls {
+  position: relative;
 }

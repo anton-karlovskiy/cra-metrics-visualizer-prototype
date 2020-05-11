@@ -3,21 +3,28 @@ import React, { memo } from 'react';
 
 import Filmstrips from './Filmstrips';
 import Timeline from './Timeline';
+import ClsMetric from './ClsMetric';
+import { METRICS } from 'utils/constants';
 import Error from 'components/Error';
 import './metrics-visualizer.css';
 
 const DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE = 120;
+const METRICS_VISUALIZER_TIMING_SIDE_PADDING = 40;
+const METRICS_VISUALIZER_CLS_SIDE_PADDING = 20;
 
 const MetricsVisualizer = ({
   runtimeError = {},
   lighthouseInfo: {
     metrics = {},
-    screenshotDetails = {}
+    screenshotDetails = {},
+    finalScreenshot = {}
   } = {}
 }) => (
   <div className='metrics-visualizer'>
-    <div className='metrics-visualizer-inside'>
-      <Error error={runtimeError} />
+    <Error error={runtimeError} />  
+    <div
+      style={{padding: `0 ${METRICS_VISUALIZER_TIMING_SIDE_PADDING}px`}}
+      className='metrics-visualizer-timing'>
       <Filmstrips
         style={{padding: `${DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE}px 0`}}
         screenshotDetails={screenshotDetails} />
@@ -26,6 +33,14 @@ const MetricsVisualizer = ({
         distanceBetweenFilmstripsAndTimeline={DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE}
         metrics={metrics} />
     </div>
+    <ClsMetric
+      clsMetric={metrics[METRICS.CUMULATIVE_LAYOUT_SHIFT.ID]}
+      filmstrip={finalScreenshot}
+      style={{
+        padding: `${DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE}px ${METRICS_VISUALIZER_CLS_SIDE_PADDING}px`,
+        width: `calc((100% - ${METRICS_VISUALIZER_TIMING_SIDE_PADDING}px * 2 - ${METRICS_VISUALIZER_CLS_SIDE_PADDING}px * 2) / 11 + ${METRICS_VISUALIZER_CLS_SIDE_PADDING}px * 2)`
+      }}
+      className='metrics-visualizer-cls' />
   </div>
 );
 

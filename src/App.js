@@ -22,7 +22,8 @@ const MetricsVisualizer = lazy(
 const App = () => {
   const [lighthouseInfo, setLighthouseInfo] = useState({
     metrics: {},
-    screenshotDetails: {}
+    screenshotDetails: {},
+    finalScreenshot: {}
   });
   const [loading, setLoading] = useState(false);
   const [runtimeError, setRuntimeError] = useState({});
@@ -50,7 +51,6 @@ const App = () => {
       lhr = await response.json();
 
       console.log('[LighthouseAction] lhr => ', lhr);
-      console.log('[LighthouseAction] => final-screenshot => ', lhr.audits['final-screenshot']);
 
       const metrics = {
         [METRICS.FIRST_BYTE.ID]: lhr.audits[METRICS.FIRST_BYTE.ID],
@@ -62,7 +62,8 @@ const App = () => {
         [METRICS.CUMULATIVE_LAYOUT_SHIFT.ID]: lhr.audits[METRICS.CUMULATIVE_LAYOUT_SHIFT.ID],
         [METRICS.TOTAL_BLOCKING_TIME.ID]: lhr.audits[METRICS.TOTAL_BLOCKING_TIME.ID]
       };
-      
+      const finalScreenshot = lhr.audits['final-screenshot'];
+      console.log('[LighthouseAction] => final-screenshot => ', finalScreenshot);
       const screenshotDetails = lhr.audits['screenshot-thumbnails'].details;
 
       console.log('[LighthouseAction] metrics => ', metrics);
@@ -71,10 +72,13 @@ const App = () => {
       const dimensions = await getImageDimensions(screenshotDetails.items[0].data);
       screenshotDetails.intrinsicWidth = dimensions.width;
       screenshotDetails.intrinsicHeight = dimensions.height;
+      finalScreenshot.intrinsicWidth = dimensions.width;
+      finalScreenshot.intrinsicHeight = dimensions.height;
 
       setLighthouseInfo({
         metrics,
-        screenshotDetails
+        screenshotDetails,
+        finalScreenshot
       });
     } catch (error) {
       console.log('[LighthouseAction submitCallback] error => ', error);
