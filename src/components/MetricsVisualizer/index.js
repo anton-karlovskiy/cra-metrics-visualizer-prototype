@@ -35,16 +35,16 @@ const MetricsVisualizer = ({
   const timingMetrics = Object.values(metrics).filter(metric => !excludedMetrics.includes(metric.id));
 
   return (
-    <div>
+    <div className='metrics-visualizer'>
       <StrategySwitch
         disabled={loading}
         inputs={inputs}
         inputChange={inputChange} />
-      <div className='metrics-visualizer'>
+      <div className='metrics-visualizer-inside'>
         <Error error={runtimeError} />  
         <div
           style={{padding: `0 ${METRICS_VISUALIZER_TIMING_SIDE_PADDING}px`}}
-          className='metrics-visualizer-timing'>
+          className='metrics-visualizer-inside-timing'>
           <Filmstrips
             style={{padding: `${DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE}px 0`}}
             screenshotDetails={screenshotDetails} />

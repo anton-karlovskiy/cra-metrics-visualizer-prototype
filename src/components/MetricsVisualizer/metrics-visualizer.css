@@ -1,11 +1,13 @@
 
 .metrics-visualizer {
+  padding: 0 120px;
+}
+
+.metrics-visualizer-inside {
   position: relative;
-  margin: 0 auto;
-  max-width: 1400px;
   display: flex;
 }
 
-.metrics-visualizer-timing {
+.metrics-visualizer-inside-timing {
   flex-grow: 1;
 }
