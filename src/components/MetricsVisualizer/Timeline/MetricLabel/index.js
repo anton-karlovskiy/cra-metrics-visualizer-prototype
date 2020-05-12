@@ -43,7 +43,7 @@ const MetricLabel = ({
             right: '-20px',
             zIndex: `-${sequenceIndex}`
           }}
-          className='metric-label'>
+          className='metric-label font-weight-bold'>
           {`${targetMetric.TITLE}: ${Math.floor(metric.numericValue)}ms`}
         </div>
       </div>

@@ -23,7 +23,7 @@ const ClsMetricLabel = ({ clsMetric }) => {
             top: `${DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE}px`,
             transform: 'translate(-50%, 0)'
           }}
-          className='cls-metric-label'>
+          className='cls-metric-label font-weight-bold'>
           {`${targetMetric.TITLE}: ${Math.floor(clsMetric.displayValue)}`}
         </div>
       </div>

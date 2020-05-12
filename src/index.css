@@ -125,3 +125,7 @@ button {
   font-weight: var(--typography-font-weight-bold);
   text-transform: uppercase;
 }
+
+.font-weight-bold {
+  font-weight: 700;
+}
