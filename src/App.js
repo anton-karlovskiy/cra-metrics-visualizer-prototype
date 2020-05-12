@@ -39,6 +39,11 @@ const App = () => {
     const url = inputs[INPUT_NAMES.LIGHTHOUSE_URL];
     setURLQueryParam(url);
     setRuntimeError({});
+    setLighthouseInfo({
+      metrics: {},
+      screenshotDetails: {},
+      finalScreenshot: {}
+    });
 
     if (!url) return;
     
@@ -85,10 +90,6 @@ const App = () => {
       });
     } catch (error) {
       console.log('[LighthouseAction submitCallback] error => ', error);
-      setLighthouseInfo({
-        metrics: {},
-        screenshotDetails: {}
-      });
     }
 
     if (lhr && lhr.runtimeError) {
