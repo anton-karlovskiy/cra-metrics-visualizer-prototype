@@ -67,7 +67,6 @@ li, li p {
 }
 
 body {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -77,8 +76,6 @@ body {
   line-height: var(--typography-body1-line-height);
   letter-spacing: var(--typography-body1-letter-spacing);
   margin: 0;
-  max-width: 100%;
-  min-height: 100vh;
   text-align: center;
   background-color: var(--palette-bg-default);
   -webkit-font-smoothing: antialiased;
@@ -86,11 +83,9 @@ body {
 }
 
 div#root {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
 }
 
 a {

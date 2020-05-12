@@ -3,6 +3,7 @@ import React, { useMemo } from 'react';
 
 import MetricLabel from './MetricLabel';
 import { METRICS } from 'utils/constants';
+import { METRIC_LABEL } from 'utils/styling';
 import './timeline.css';
 
 const Timeline = ({
@@ -13,7 +14,9 @@ const Timeline = ({
   const fcpMetric = useMemo(() => metrics.find(metric => metric.id === METRICS.FIRST_CONTENTFUL_PAINT.ID), [metrics]);
 
   return (
-    <div className='timeline'>
+    <div
+      style={{minHeight: `${metrics.length * (METRIC_LABEL.HEIGHT + METRIC_LABEL.VERTICAL_SPACING) - METRIC_LABEL.VERTICAL_SPACING}px`}}
+      className='timeline'>
       {metrics.map((metric, index) => {
         let barPos;
         switch (metric.id) {
