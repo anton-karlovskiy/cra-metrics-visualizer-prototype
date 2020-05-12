@@ -1,9 +1,27 @@
+/*
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the 'License');
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an 'AS IS' BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 import React, { useMemo } from 'react';
 
 import MetricLabel from './MetricLabel';
 import { METRICS } from 'utils/constants';
-import { METRIC_LABEL } from 'utils/styling';
+import {
+  METRIC_LABEL_TEXT,
+  DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE
+} from 'utils/styling';
 import './timeline.css';
 
 const Timeline = ({
@@ -15,7 +33,7 @@ const Timeline = ({
 
   return (
     <div
-      style={{minHeight: `${metrics.length * (METRIC_LABEL.HEIGHT + METRIC_LABEL.VERTICAL_SPACING) - METRIC_LABEL.VERTICAL_SPACING}px`}}
+      style={{minHeight: `${metrics.length * (METRIC_LABEL_TEXT.HEIGHT + METRIC_LABEL_TEXT.VERTICAL_SPACING) - METRIC_LABEL_TEXT.VERTICAL_SPACING}px`}}
       className='timeline'>
       {metrics.map((metric, index) => {
         let barPos;
@@ -33,12 +51,20 @@ const Timeline = ({
           default: break;
         }
 
+        const topOffset = index * (METRIC_LABEL_TEXT.HEIGHT + METRIC_LABEL_TEXT.VERTICAL_SPACING);
+        const barHeight = topOffset + DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE;
+
         return (
           <MetricLabel
             key={metric.id}
-            hidden={metric.id === METRICS.TOTAL_BLOCKING_TIME.ID}
-            barPos={barPos}
-            sequenceIndex={index}
+            style={{
+              position: 'absolute',
+              top: `-${DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE}px`,
+              left: `${barPos}%`,
+              zIndex: `-${index}`
+            }}
+            barHidden={metric.id === METRICS.TOTAL_BLOCKING_TIME.ID}
+            barHeight={barHeight}
             metric={metric} />
         );
       })}
