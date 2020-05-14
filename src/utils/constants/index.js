@@ -15,7 +15,6 @@
  */
 
 const APP_NAME = 'Metrics Visualizer';
-const LOGO_URL = 'https://www.gstatic.com/images/icons/material/product/2x/pagespeed_64dp.png';
 const LIGHTHOUSE_ENDPOINT ='/lighthouse';
 
 const METRICS = {
@@ -78,7 +77,6 @@ const INPUT_NAMES = {
 
 export {
   APP_NAME,
-  LOGO_URL,
   LIGHTHOUSE_ENDPOINT,
   METRICS,
   STRATEGY,

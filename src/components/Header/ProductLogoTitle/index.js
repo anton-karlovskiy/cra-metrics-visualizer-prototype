@@ -16,7 +16,8 @@
 
 import React from 'react';
 
-import { LOGO_URL, APP_NAME } from 'utils/constants';
+import { APP_NAME } from 'utils/constants';
+import logo from 'assets/logo/speedometer.svg';
 import './product-logo-title.css';
 
 const ProductLogoTitle = () => (
@@ -26,7 +27,7 @@ const ProductLogoTitle = () => (
       className='product-link'
       data-label='Project Logo (header)'>
       <img
-        src={LOGO_URL}
+        src={logo}
         className='product-logo'
         alt='PageSpeed Metrics Visualizer' />
     </a>
