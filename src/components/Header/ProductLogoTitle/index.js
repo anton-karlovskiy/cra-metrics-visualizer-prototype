@@ -29,7 +29,7 @@ const ProductLogoTitle = () => (
       <img
         src={logo}
         className='product-logo'
-        alt='PageSpeed Metrics Visualizer' />
+        alt='Metrics Viz' />
     </a>
     <a
       href='/'

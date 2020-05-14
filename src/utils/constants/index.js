@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-const APP_NAME = 'Metrics Visualizer';
+const APP_NAME = 'Metrics Viz';
 const LIGHTHOUSE_ENDPOINT ='/lighthouse';
 
 const METRICS = {
