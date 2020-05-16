@@ -42,7 +42,7 @@ const ClsMetricLabel = ({
             transform: 'translate(-50%, 0)'
           }}
           className='cls-metric-label-text font-weight-bold'>
-          {`${targetMetric.TITLE}: ${Math.floor(clsMetric.displayValue)}`}
+          {`${targetMetric.TITLE}: ${clsMetric.displayValue}`}
         </div>
       </div>
     </VerticalBar>

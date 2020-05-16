@@ -10,7 +10,10 @@ const { URL } = require('url');
 
 const lighthouseFromPuppeteer = async (url, strategy = 'mobile') => {
   const browser = await puppeteer.launch({
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
+    args: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox'
+    ]
   });
   const { lhr } = await lighthouse(url, {
     port: (new URL(browser.wsEndpoint())).port,
@@ -19,7 +22,10 @@ const lighthouseFromPuppeteer = async (url, strategy = 'mobile') => {
     emulatedFormFactor: strategy,
     throttlingMethod: 'devtools',
     onlyCategories: ['performance'],
-    chromeFlags: ['--headless', '--disable-gpu']
+    chromeFlags: [
+      '--headless',
+      '--disable-gpu'
+    ]
   });
   console.log(`Lighthouse scores: ${Object.values(lhr.categories).map(c => c.score).join(', ')}`);
   await browser.close();
