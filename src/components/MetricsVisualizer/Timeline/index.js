@@ -32,11 +32,14 @@ const Timeline = ({
   const ttiMetric = useMemo(() => metrics.find(metric => metric.id === METRICS.TIME_TO_INTERACTIVE.ID), [metrics]) || {};
   const fcpMetric = useMemo(() => metrics.find(metric => metric.id === METRICS.FIRST_CONTENTFUL_PAINT.ID), [metrics]) || {};
   const siMetric = useMemo(() => metrics.find(metric => metric.id === METRICS.SPEED_INDEX.ID), [metrics]) || {};
+  // TODO: it should be First Paint instead of First Byte
   const fbMetric = useMemo(() => metrics.find(metric => metric.id === METRICS.FIRST_BYTE.ID), [metrics]) || {};
 
   const happeningMomentPos = fbMetric.numericValue / scale * 100;
   const usefulMomentPos = (siMetric.numericValue + fcpMetric.numericValue) / 2 / scale * 100;
   const usableMomentPos = ttiMetric.numericValue / scale * 100;
+  const lineLeft = isNaN(happeningMomentPos) ? usefulMomentPos : happeningMomentPos;
+  const lineRight = 100 - (isNaN(usableMomentPos) ? usefulMomentPos : usableMomentPos);
 
   return (
     <>
@@ -79,6 +82,8 @@ const Timeline = ({
       </div>
       {scale && (
         <BottomMomentBanner
+          lineLeft={lineLeft}
+          lineRight={lineRight}
           happeningMomentPos={happeningMomentPos}
           usefulMomentPos={usefulMomentPos}
           usableMomentPos={usableMomentPos} />

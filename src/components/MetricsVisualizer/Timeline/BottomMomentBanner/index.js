@@ -26,34 +26,49 @@ const commonStyle = {
 };
 
 const BottomMomentBanner = ({
+  lineLeft,
+  lineRight,
   happeningMomentPos,
   usefulMomentPos,
   usableMomentPos
 }) => {
   return (
     <div className='bottom-moment-banner'>
-      <div className='center-line' />
-      <MomentAnnotation
-        style={{
-          ...commonStyle,
-          transform: 'translate(-100%, -50%)',
-          left: `${happeningMomentPos}%`
-        }}
-        text='Is it happening?' />
-      <MomentAnnotation
-        style={{
-          ...commonStyle,
-          transform: 'translate(-50%, -50%)',
-          left: `${usefulMomentPos}%`
-        }}
-        text='Is it useful?' />
-      <MomentAnnotation
-        style={{
-          ...commonStyle,
-          transform: 'translate(-80%, -50%)',
-          left: `${usableMomentPos}%`
-        }}
-        text='Is it usable?' />
+      {!isNaN(lineLeft) && !isNaN(lineRight) && (
+        <div
+          style={{
+            left: `${lineLeft}%`,
+            right: `${lineRight}%`
+          }}
+          className='center-line' />
+      )}
+      {!isNaN(happeningMomentPos) && (
+        <MomentAnnotation
+          style={{
+            ...commonStyle,
+            transform: 'translate(-100%, -50%)',
+            left: `${happeningMomentPos}%`
+          }}
+          text='Is it happening?' />
+      )}
+      {!isNaN(usefulMomentPos) && (
+        <MomentAnnotation
+          style={{
+            ...commonStyle,
+            transform: 'translate(-50%, -50%)',
+            left: `${usefulMomentPos}%`
+          }}
+          text='Is it useful?' />
+      )}
+      {!isNaN(usableMomentPos) && (
+        <MomentAnnotation
+          style={{
+            ...commonStyle,
+            transform: 'translate(-80%, -50%)',
+            left: `${usableMomentPos}%`
+          }}
+          text='Is it usable?' />
+      )}
     </div>
   );
 };
