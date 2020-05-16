@@ -7,6 +7,32 @@ const cors = require('cors');
 const lighthouse = require('lighthouse');
 const puppeteer = require('puppeteer');
 const { URL } = require('url');
+const chromeLauncher = require('chrome-launcher');
+
+const lighthouseFromChromeLauncher = async (url, strategy = 'mobile') => {
+  return chromeLauncher.launch({
+    chromeFlags: [
+      '--show-paint-rects',
+      '--headless',
+      '--disable-gpu'
+    ]
+  }).then(chrome => {
+    return lighthouse(url, {
+        port: chrome.port,
+        output: 'json',
+        logLevel: 'info',
+        emulatedFormFactor: strategy,
+        throttlingMethod: 'devtools',
+        onlyCategories: ['performance']
+      }, config = null).then(results => {
+        // use results.lhr for the JS-consumable output
+        // https://github.com/GoogleChrome/lighthouse/blob/master/types/lhr.d.ts
+        // use results.report for the HTML/JSON/CSV output as a string
+        // use results.artifacts for the trace/screenshots/other specific case you need (rarer)
+        return chrome.kill().then(() => results.lhr);
+      });
+  });
+};
 
 const lighthouseFromPuppeteer = async (url, strategy = 'mobile') => {
   const browser = await puppeteer.launch({
