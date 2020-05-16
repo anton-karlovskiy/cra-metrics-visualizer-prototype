@@ -16,7 +16,7 @@
 
 import React from 'react';
 
-import MomentAnnotation from './MomentAnnotation';
+import BottomMomentAnnotation from './BottomMomentAnnotation';
 import './bottom-moment-banner.css';
 
 const commonStyle = {
@@ -43,7 +43,7 @@ const BottomMomentBanner = ({
           className='center-line' />
       )}
       {!isNaN(happeningMomentPos) && (
-        <MomentAnnotation
+        <BottomMomentAnnotation
           style={{
             ...commonStyle,
             transform: 'translate(-100%, -50%)',
@@ -52,7 +52,7 @@ const BottomMomentBanner = ({
           text='Is it happening?' />
       )}
       {!isNaN(usefulMomentPos) && (
-        <MomentAnnotation
+        <BottomMomentAnnotation
           style={{
             ...commonStyle,
             transform: 'translate(-50%, -50%)',
@@ -61,7 +61,7 @@ const BottomMomentBanner = ({
           text='Is it useful?' />
       )}
       {!isNaN(usableMomentPos) && (
-        <MomentAnnotation
+        <BottomMomentAnnotation
           style={{
             ...commonStyle,
             transform: 'translate(-80%, -50%)',

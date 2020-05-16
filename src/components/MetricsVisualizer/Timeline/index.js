@@ -18,6 +18,9 @@ import React, { useMemo } from 'react';
 
 import MetricLabel from './MetricLabel';
 import BottomMomentBanner from './BottomMomentBanner';
+// ray test touch <
+import TopMomentBanner from './TopMomentBanner';
+// ray test touch >
 import { METRICS } from 'utils/constants';
 import {
   METRIC_LABEL_TEXT,
@@ -45,7 +48,7 @@ const Timeline = ({
     <>
       <div
         style={{minHeight: `${metrics.length * (METRIC_LABEL_TEXT.HEIGHT + METRIC_LABEL_TEXT.VERTICAL_SPACING) - METRIC_LABEL_TEXT.VERTICAL_SPACING}px`}}
-        className='timeline'>
+        className='metric-labels'>
         {metrics.map((metric, index) => {
           let barPos;
           switch (metric.id) {
@@ -80,6 +83,9 @@ const Timeline = ({
           );
         })}
       </div>
+      {/* ray test touch < */}
+      <TopMomentBanner className='top-moment-banner' />
+      {/* ray test touch > */}
       {scale && (
         <BottomMomentBanner
           lineLeft={lineLeft}

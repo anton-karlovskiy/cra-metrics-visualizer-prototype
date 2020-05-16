@@ -1,3 +1,4 @@
+
 /*
  * Copyright 2020 Google LLC
  *
@@ -14,21 +15,9 @@
  * limitations under the License.
  */
 
-import React from 'react';
-
-import './moment-annotation.css';
-
-const MomentAnnotation = ({
-  text,
-  ...rest
-}) => {
-  return (
-    <div
-      {...rest}
-      className='moment-annotation'>
-      {text}
-    </div>
-  );
-};
-
-export default MomentAnnotation;
+.bottom-moment-annotation {
+  display: inline-block;
+  color: var(--palette-text-secondary);
+  padding: 4px 8px;
+  white-space: nowrap;
+}

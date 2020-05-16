@@ -1,4 +1,3 @@
-
 /*
  * Copyright 2020 Google LLC
  *
@@ -15,9 +14,21 @@
  * limitations under the License.
  */
 
-.moment-annotation {
-  display: inline-block;
-  color: var(--palette-text-secondary);
-  padding: 4px 8px;
-  white-space: nowrap;
-}
+import React from 'react';
+
+import './bottom-moment-annotation.css';
+
+const BottomMomentAnnotation = ({
+  text,
+  ...rest
+}) => {
+  return (
+    <div
+      {...rest}
+      className='bottom-moment-annotation'>
+      {text}
+    </div>
+  );
+};
+
+export default BottomMomentAnnotation;

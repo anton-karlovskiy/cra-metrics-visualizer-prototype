@@ -14,13 +14,18 @@
  * limitations under the License.
  */
 
-.metric-labels {
-  position: relative;
-}
+// ray test touch <
+import React from 'react';
 
-/* ray test touch < */
-.top-moment-banner {
-  position: absolute;
-  top: 0;
-}
-/* ray test touch > */
+import './top-moment-banner.css';
+
+const TopMomentBanner = ({ className }) => {
+  return (
+    <div className={className}>
+      TopMomentBanner
+    </div>
+  );
+};
+
+export default TopMomentBanner;
+// ray test touch >
