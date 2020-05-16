@@ -31,11 +31,12 @@ const Timeline = ({
 }) => {
   const ttiMetric = useMemo(() => metrics.find(metric => metric.id === METRICS.TIME_TO_INTERACTIVE.ID), [metrics]) || {};
   const fcpMetric = useMemo(() => metrics.find(metric => metric.id === METRICS.FIRST_CONTENTFUL_PAINT.ID), [metrics]) || {};
+  const siMetric = useMemo(() => metrics.find(metric => metric.id === METRICS.SPEED_INDEX.ID), [metrics]) || {};
+  const fbMetric = useMemo(() => metrics.find(metric => metric.id === METRICS.FIRST_BYTE.ID), [metrics]) || {};
 
-  // ray test touch <
+  const happeningMomentPos = fbMetric.numericValue / scale * 100;
+  const usefulMomentPos = (siMetric.numericValue + fcpMetric.numericValue) / 2 / scale * 100;
   const usableMomentPos = ttiMetric.numericValue / scale * 100;
-  console.log('ray : ***** usableMomentPos => ', usableMomentPos);
-  // ray test touch >
 
   return (
     <>
@@ -76,14 +77,12 @@ const Timeline = ({
           );
         })}
       </div>
-      {/* ray test touch < */}
       {scale && (
         <BottomMomentBanner
-          happeningMomentPos={30}
-          usefulMomentPos={60}
+          happeningMomentPos={happeningMomentPos}
+          usefulMomentPos={usefulMomentPos}
           usableMomentPos={usableMomentPos} />
       )}
-      {/* ray test touch > */}
     </>
   );
 };

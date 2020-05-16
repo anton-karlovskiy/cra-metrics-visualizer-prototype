@@ -22,8 +22,7 @@ import './bottom-moment-banner.css';
 const commonStyle = {
   backgroundColor: 'var(--palette-bg-default)',
   position: 'absolute',
-  top: '50%',
-  transform: 'translate(-80%, -50%)'
+  top: '50%'
 };
 
 const BottomMomentBanner = ({
@@ -37,18 +36,21 @@ const BottomMomentBanner = ({
       <MomentAnnotation
         style={{
           ...commonStyle,
+          transform: 'translate(-100%, -50%)',
           left: `${happeningMomentPos}%`
         }}
         text='Is it happening?' />
       <MomentAnnotation
         style={{
           ...commonStyle,
+          transform: 'translate(-50%, -50%)',
           left: `${usefulMomentPos}%`
         }}
         text='Is it useful?' />
       <MomentAnnotation
         style={{
           ...commonStyle,
+          transform: 'translate(-80%, -50%)',
           left: `${usableMomentPos}%`
         }}
         text='Is it usable?' />
