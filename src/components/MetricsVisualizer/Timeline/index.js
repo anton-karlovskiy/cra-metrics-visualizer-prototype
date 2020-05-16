@@ -17,6 +17,7 @@
 import React, { useMemo } from 'react';
 
 import MetricLabel from './MetricLabel';
+import BottomMomentBanner from './BottomMomentBanner';
 import { METRICS } from 'utils/constants';
 import {
   METRIC_LABEL_TEXT,
@@ -32,43 +33,49 @@ const Timeline = ({
   const fcpMetric = useMemo(() => metrics.find(metric => metric.id === METRICS.FIRST_CONTENTFUL_PAINT.ID), [metrics]);
 
   return (
-    <div
-      style={{minHeight: `${metrics.length * (METRIC_LABEL_TEXT.HEIGHT + METRIC_LABEL_TEXT.VERTICAL_SPACING) - METRIC_LABEL_TEXT.VERTICAL_SPACING}px`}}
-      className='timeline'>
-      {metrics.map((metric, index) => {
-        let barPos;
-        switch (metric.id) {
-          case METRICS.FIRST_BYTE.ID:
-          case METRICS.FIRST_CONTENTFUL_PAINT.ID:
-          case METRICS.LARGEST_CONTENTFUL_PAINT.ID:
-          case METRICS.SPEED_INDEX.ID:
-          case METRICS.TIME_TO_INTERACTIVE.ID:
-            barPos = (metric.numericValue / scale * 100).toFixed(2);
-            break;
-          case METRICS.TOTAL_BLOCKING_TIME.ID:
-            barPos = ((ttiMetric.numericValue + fcpMetric.numericValue) / 2 / scale * 100).toFixed(2);
-            break;
-          default: break;
-        }
+    <>
+      <div
+        style={{minHeight: `${metrics.length * (METRIC_LABEL_TEXT.HEIGHT + METRIC_LABEL_TEXT.VERTICAL_SPACING) - METRIC_LABEL_TEXT.VERTICAL_SPACING}px`}}
+        className='timeline'>
+        {metrics.map((metric, index) => {
+          let barPos;
+          switch (metric.id) {
+            case METRICS.FIRST_BYTE.ID:
+            case METRICS.FIRST_CONTENTFUL_PAINT.ID:
+            case METRICS.LARGEST_CONTENTFUL_PAINT.ID:
+            case METRICS.SPEED_INDEX.ID:
+            case METRICS.TIME_TO_INTERACTIVE.ID:
+              barPos = (metric.numericValue / scale * 100).toFixed(2);
+              break;
+            case METRICS.TOTAL_BLOCKING_TIME.ID:
+              barPos = ((ttiMetric.numericValue + fcpMetric.numericValue) / 2 / scale * 100).toFixed(2);
+              break;
+            default: break;
+          }
 
-        const topOffset = index * (METRIC_LABEL_TEXT.HEIGHT + METRIC_LABEL_TEXT.VERTICAL_SPACING);
-        const barHeight = topOffset + DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE;
+          const topOffset = index * (METRIC_LABEL_TEXT.HEIGHT + METRIC_LABEL_TEXT.VERTICAL_SPACING);
+          const barHeight = topOffset + DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE;
 
-        return (
-          <MetricLabel
-            key={metric.id}
-            style={{
-              position: 'absolute',
-              top: `-${DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE}px`,
-              left: `${barPos}%`,
-              zIndex: `-${index}`
-            }}
-            barHidden={metric.id === METRICS.TOTAL_BLOCKING_TIME.ID}
-            barHeight={barHeight}
-            metric={metric} />
-        );
-      })}
-    </div>
+          return (
+            <MetricLabel
+              key={metric.id}
+              style={{
+                position: 'absolute',
+                top: `-${DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE}px`,
+                left: `${barPos}%`,
+                zIndex: `-${index}`
+              }}
+              barHidden={metric.id === METRICS.TOTAL_BLOCKING_TIME.ID}
+              barHeight={barHeight}
+              metric={metric} />
+          );
+        })}
+      </div>
+      <BottomMomentBanner
+        happeningMomentPos={30}
+        usefulMomentPos={60}
+        usableMomentPos={90} />
+    </>
   );
 };
 
