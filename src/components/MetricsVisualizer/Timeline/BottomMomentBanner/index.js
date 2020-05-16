@@ -23,7 +23,7 @@ const commonStyle = {
   backgroundColor: 'var(--palette-bg-default)',
   position: 'absolute',
   top: '50%',
-  transform: 'translate(0%, -50%)'
+  transform: 'translate(-80%, -50%)'
 };
 
 const BottomMomentBanner = ({

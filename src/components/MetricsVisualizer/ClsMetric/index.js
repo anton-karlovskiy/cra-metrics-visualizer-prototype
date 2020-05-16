@@ -22,7 +22,7 @@ import './cls-metric.css';
 
 const ClsMetric = ({
   clsMetric,
-  finalScreenshot,
+  finalScreenshot = {},
   style
 }) => (
   <div

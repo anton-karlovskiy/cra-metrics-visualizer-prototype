@@ -23,9 +23,11 @@ import './cls-metric-label.css';
 
 const ClsMetricLabel = ({
   className,
-  clsMetric
+  clsMetric = {}
 }) => {
   const targetMetric = useMemo(() => Object.values(METRICS).find(item => item.ID === clsMetric.id), [clsMetric]);
+
+  if (!targetMetric) return null;
 
   return (
     <VerticalBar
