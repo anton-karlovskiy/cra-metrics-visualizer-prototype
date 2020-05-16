@@ -14,18 +14,51 @@
  * limitations under the License.
  */
 
-// ray test touch <
 import React from 'react';
 
+import TopMomentAnnotation from './TopMomentAnnotation';
 import './top-moment-banner.css';
+import { DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE } from 'utils/styling';
 
-const TopMomentBanner = ({ className }) => {
+const commonStyle = {
+  position: 'absolute',
+  top: `${DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE / 2}px`
+};
+
+const TopMomentBanner = ({
+  style,
+  className,
+  usefulMomentPos,
+  usableMomentPos
+}) => {
   return (
-    <div className={className}>
-      TopMomentBanner
+    <div
+      style={style}
+      className={className}>
+      <div className='top-moment-banner-inside'>
+        {!isNaN(usefulMomentPos) && (
+          <TopMomentAnnotation
+            style={{
+              ...commonStyle,
+              transform: 'translate(-50%, -50%)',
+              color: 'var(--palette-lime-500)',
+              left: `${usefulMomentPos}%`
+            }}
+            text='When did the user feel they could interact?' />
+        )}
+        {!isNaN(usableMomentPos) && (
+          <TopMomentAnnotation
+            style={{
+              ...commonStyle,
+              transform: 'translate(-80%, -50%)',
+              color: 'var(--palette-orange-500)',
+              left: `${usableMomentPos}%`
+            }}
+            text='When could they interact?' />
+        )}
+      </div>
     </div>
   );
 };
 
 export default TopMomentBanner;
-// ray test touch >

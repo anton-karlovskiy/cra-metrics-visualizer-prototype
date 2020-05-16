@@ -18,13 +18,12 @@ import React, { useMemo } from 'react';
 
 import MetricLabel from './MetricLabel';
 import BottomMomentBanner from './BottomMomentBanner';
-// ray test touch <
 import TopMomentBanner from './TopMomentBanner';
-// ray test touch >
 import { METRICS } from 'utils/constants';
 import {
   METRIC_LABEL_TEXT,
-  DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE
+  DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE,
+  METRICS_VISUALIZER_TIMING_SIDE_PADDING
 } from 'utils/styling';
 import './timeline.css';
 
@@ -83,9 +82,13 @@ const Timeline = ({
           );
         })}
       </div>
-      {/* ray test touch < */}
-      <TopMomentBanner className='top-moment-banner' />
-      {/* ray test touch > */}
+      <TopMomentBanner
+        style={{
+          width: `calc(100% - 2 * ${METRICS_VISUALIZER_TIMING_SIDE_PADDING}px)`
+        }}
+        className='top-moment-banner'
+        usefulMomentPos={usefulMomentPos}
+        usableMomentPos={usableMomentPos} />
       {scale && (
         <BottomMomentBanner
           lineLeft={lineLeft}

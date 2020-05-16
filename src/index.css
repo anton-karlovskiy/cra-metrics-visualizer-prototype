@@ -39,6 +39,7 @@
   --typography-font-weight-regular: 400;
   --typography-font-weight-medium: 500;
   --typography-font-weight-bold: 700;
+  --palette-lime-500: #cddc39;
   --palette-blue-500: #2196f3; /* First Byte */
   --palette-amber-500: #ffc107; /* First Paint */
   --palette-green-500: #4caf50; /* First Contentful Paint */

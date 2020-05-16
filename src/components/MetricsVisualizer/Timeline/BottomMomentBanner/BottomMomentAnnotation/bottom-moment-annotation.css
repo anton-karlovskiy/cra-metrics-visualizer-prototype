@@ -20,4 +20,5 @@
   color: var(--palette-text-secondary);
   padding: 4px 8px;
   white-space: nowrap;
+  font-weight: var(--typography-font-weight-bold);
 }

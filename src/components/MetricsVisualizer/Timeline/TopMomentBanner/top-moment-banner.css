@@ -14,5 +14,6 @@
  * limitations under the License.
  */
 
-/* ray test touch < */
-/* ray test touch > */
+.top-moment-banner-inside {
+  position: relative;
+}

@@ -21,14 +21,12 @@ import './bottom-moment-annotation.css';
 const BottomMomentAnnotation = ({
   text,
   ...rest
-}) => {
-  return (
-    <div
-      {...rest}
-      className='bottom-moment-annotation'>
-      {text}
-    </div>
-  );
-};
+}) => (
+  <div
+    {...rest}
+    className='bottom-moment-annotation'>
+    {text}
+  </div>
+);
 
 export default BottomMomentAnnotation;

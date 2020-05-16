@@ -26,7 +26,7 @@ const StrategySwitch = ({
   inputChange
 }) => (
   <div className='strategy-switch'>
-    <span className='strategy-label mobile'>
+    <span className='strategy-label font-weight-bold mobile'>
       {STRATEGY.MOBILE}
     </span>
     <Switch
@@ -34,7 +34,7 @@ const StrategySwitch = ({
       name={INPUT_NAMES.IS_DESKTOP_STRATEGY}
       checked={inputs[INPUT_NAMES.IS_DESKTOP_STRATEGY]}
       onChange={inputChange} />
-    <span className='strategy-label desktop'>
+    <span className='strategy-label font-weight-bold desktop'>
       {STRATEGY.DESKTOP}
     </span>
   </div>

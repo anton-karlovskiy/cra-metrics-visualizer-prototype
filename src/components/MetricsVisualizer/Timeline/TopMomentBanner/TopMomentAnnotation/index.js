@@ -14,16 +14,19 @@
  * limitations under the License.
  */
 
-// ray test touch <
 import React from 'react';
 
 import './top-moment-annotation.css';
 
-const TopMomentAnnotation = () => {
-  return (
-    <div>TopMomentAnnotation</div>
-  );
-};
+const TopMomentAnnotation = ({
+  text,
+  ...rest
+}) => (
+  <div
+    {...rest}
+    className='top-moment-annotation'>
+    {text}
+  </div>
+);
 
 export default TopMomentAnnotation;
-// ray test touch >

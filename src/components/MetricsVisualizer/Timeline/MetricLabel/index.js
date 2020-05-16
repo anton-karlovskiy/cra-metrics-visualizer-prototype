@@ -50,7 +50,7 @@ const MetricLabel = ({
             top: `${barHeight}px`,
             right: '-20px'
           }}
-          className='metric-label-text font-weight-bold'>
+          className='metric-label-text'>
           {`${targetMetric.TITLE}: ${Math.floor(metric.numericValue)}ms`}
         </div>
       </div>
