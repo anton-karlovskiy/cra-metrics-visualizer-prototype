@@ -18,6 +18,8 @@ import React from 'react';
 
 import AspectRatioBox from 'components/UI/AspectRatioBox';
 import ClsMetricLabel from './ClsMetricLabel';
+import TopMomentAnnotation from 'components/MetricsVisualizer/Timeline/TopMomentBanner/TopMomentAnnotation';
+import { DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE } from 'utils/styling';
 import './cls-metric.css';
 
 const ClsMetric = ({
@@ -28,6 +30,15 @@ const ClsMetric = ({
   <div
     style={style}
     className='cls-metric'>
+    <TopMomentAnnotation
+      style={{
+        position: 'absolute',
+        top: `${DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE / 2}px`,
+        transform: 'translate(-50%, -50%)',
+        color: 'var(--palette-common-white)',
+        left: '50%'
+      }}
+      text='Was layout stable?' />
     <AspectRatioBox aspectRatio={finalScreenshot.intrinsicWidth / finalScreenshot.intrinsicHeight}>
       <img
         width='100%'
