@@ -23,5 +23,6 @@ header {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 24px;
+  /* MEMO: should be matched with header height */
   height: 48px;
 }
