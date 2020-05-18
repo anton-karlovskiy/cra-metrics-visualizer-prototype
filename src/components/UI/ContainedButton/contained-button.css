@@ -23,7 +23,7 @@
 }
 
 .contained-button:hover {
-  background-color: var(--palette-grey-500-dark);
+  background-color: var(--palette-grey-900);
 }
 
 .contained-button:disabled {
