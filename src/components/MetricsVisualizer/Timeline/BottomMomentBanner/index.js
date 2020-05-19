@@ -36,15 +36,15 @@ const BottomMomentBanner = ({
 }) => {
   return (
     <div className={`bottom-moment-banner ${className}`}>
-      {!isNaN(lineLeft) && !isNaN(lineRight) && (
+      {!isNaN(lineLeft) && !isNaN(lineRight) ? (
         <div
           style={{
             left: `${lineLeft}%`,
             right: `${lineRight}%`
           }}
           className='center-line' />
-      )}
-      {happeningMomentPos && !isNaN(happeningMomentPos) && (
+      ) : null}
+      {!isNaN(happeningMomentPos) ? (
         <BottomMomentAnnotation
           style={{
             ...commonStyle,
@@ -52,8 +52,8 @@ const BottomMomentBanner = ({
             left: `${happeningMomentPos}%`
           }}
           text='Is it happening?' />
-      )}
-      {usefulMomentPos && !isNaN(usefulMomentPos) && (
+      ) : null}
+      {!isNaN(usefulMomentPos) ? (
         <BottomMomentAnnotation
           style={{
             ...commonStyle,
@@ -61,8 +61,8 @@ const BottomMomentBanner = ({
             left: `${usefulMomentPos}%`
           }}
           text='Is it useful?' />
-      )}
-      {usableMomentPos && !isNaN(usableMomentPos) && (
+      ) : null}
+      {!isNaN(usableMomentPos) ? (
         <BottomMomentAnnotation
           style={{
             ...commonStyle,
@@ -70,8 +70,8 @@ const BottomMomentBanner = ({
             left: `${usableMomentPos}%`
           }}
           text='Is it usable?' />
-      )}
-      {delightfulMomentPos && !isNaN(delightfulMomentPos) && (
+      ) : null}
+      {!isNaN(delightfulMomentPos) ? (
         <BottomMomentAnnotation
           style={{
             ...commonStyle,
@@ -79,7 +79,7 @@ const BottomMomentBanner = ({
             left: `${delightfulMomentPos}%`
           }}
           text='Is it delightful?' />
-      )}
+      ) : null}
     </div>
   );
 };
