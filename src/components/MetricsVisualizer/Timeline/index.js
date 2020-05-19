@@ -35,7 +35,7 @@ const Timeline = ({
   const fcpMetric = useMemo(() => metrics.find(metric => metric.id === METRICS.FIRST_CONTENTFUL_PAINT.ID), [metrics]) || {};
   const siMetric = useMemo(() => metrics.find(metric => metric.id === METRICS.SPEED_INDEX.ID), [metrics]) || {};
   // TODO: it should be First Paint instead of First Byte
-  const fbMetric = useMemo(() => metrics.find(metric => metric.id === METRICS.FIRST_BYTE.ID), [metrics]) || {};
+  const fbMetric = useMemo(() => metrics.find(metric => metric.id === METRICS.SERVER_RESPONSE_TIME.ID), [metrics]) || {};
 
   const happeningMomentPos = fbMetric.numericValue / scale * 100;
   const usefulMomentPos = (siMetric.numericValue + fcpMetric.numericValue) / 2 / scale * 100;
@@ -51,7 +51,7 @@ const Timeline = ({
         {metrics.map((metric, index) => {
           let barPos;
           switch (metric.id) {
-            case METRICS.FIRST_BYTE.ID:
+            case METRICS.SERVER_RESPONSE_TIME.ID:
             case METRICS.FIRST_CONTENTFUL_PAINT.ID:
             case METRICS.LARGEST_CONTENTFUL_PAINT.ID:
             case METRICS.SPEED_INDEX.ID:

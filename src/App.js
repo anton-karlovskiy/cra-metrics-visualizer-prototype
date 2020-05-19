@@ -76,7 +76,7 @@ const App = () => {
       console.log('[LighthouseAction] lhr => ', lhr);
 
       const metrics = {
-        [METRICS.FIRST_BYTE.ID]: lhr.audits[METRICS.FIRST_BYTE.ID],
+        [METRICS.SERVER_RESPONSE_TIME.ID]: lhr.audits[METRICS.SERVER_RESPONSE_TIME.ID],
         [METRICS.FIRST_CONTENTFUL_PAINT.ID]: lhr.audits[METRICS.FIRST_CONTENTFUL_PAINT.ID],
         [METRICS.LARGEST_CONTENTFUL_PAINT.ID]: lhr.audits[METRICS.LARGEST_CONTENTFUL_PAINT.ID],
         [METRICS.FIRST_INPUT_DELAY.ID]: lhr.audits[METRICS.FIRST_INPUT_DELAY.ID],

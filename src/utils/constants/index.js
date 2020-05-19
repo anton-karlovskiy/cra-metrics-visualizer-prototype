@@ -18,9 +18,9 @@ const APP_NAME = 'Metrics Viz';
 const LIGHTHOUSE_ENDPOINT ='/lighthouse';
 
 const METRICS = {
-  FIRST_BYTE: {
-    ID: 'time-to-first-byte',
-    TITLE: 'First Byte',
+  SERVER_RESPONSE_TIME: {
+    ID: 'server-response-time',
+    TITLE: 'Server Response Time',
     COLOR: '--palette-blue-500'
   },
   FIRST_PAINT: {
