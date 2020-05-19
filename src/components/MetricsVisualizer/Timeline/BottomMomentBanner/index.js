@@ -26,14 +26,16 @@ const commonStyle = {
 };
 
 const BottomMomentBanner = ({
+  className,
   lineLeft,
   lineRight,
   happeningMomentPos,
   usefulMomentPos,
-  usableMomentPos
+  usableMomentPos,
+  delightfulMomentPos
 }) => {
   return (
-    <div className='bottom-moment-banner'>
+    <div className={`bottom-moment-banner ${className}`}>
       {!isNaN(lineLeft) && !isNaN(lineRight) && (
         <div
           style={{
@@ -42,7 +44,7 @@ const BottomMomentBanner = ({
           }}
           className='center-line' />
       )}
-      {!isNaN(happeningMomentPos) && (
+      {happeningMomentPos && !isNaN(happeningMomentPos) && (
         <BottomMomentAnnotation
           style={{
             ...commonStyle,
@@ -51,7 +53,7 @@ const BottomMomentBanner = ({
           }}
           text='Is it happening?' />
       )}
-      {!isNaN(usefulMomentPos) && (
+      {usefulMomentPos && !isNaN(usefulMomentPos) && (
         <BottomMomentAnnotation
           style={{
             ...commonStyle,
@@ -60,7 +62,7 @@ const BottomMomentBanner = ({
           }}
           text='Is it useful?' />
       )}
-      {!isNaN(usableMomentPos) && (
+      {usableMomentPos && !isNaN(usableMomentPos) && (
         <BottomMomentAnnotation
           style={{
             ...commonStyle,
@@ -68,6 +70,15 @@ const BottomMomentBanner = ({
             left: `${usableMomentPos}%`
           }}
           text='Is it usable?' />
+      )}
+      {delightfulMomentPos && !isNaN(delightfulMomentPos) && (
+        <BottomMomentAnnotation
+          style={{
+            ...commonStyle,
+            transform: 'translate(-50%, -50%)',
+            left: `${delightfulMomentPos}%`
+          }}
+          text='Is it delightful?' />
       )}
     </div>
   );

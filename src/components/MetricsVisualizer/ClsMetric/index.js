@@ -19,6 +19,7 @@ import React from 'react';
 import AspectRatioBox from 'components/UI/AspectRatioBox';
 import ClsMetricLabel from './ClsMetricLabel';
 import TopMomentAnnotation from 'components/MetricsVisualizer/Timeline/TopMomentBanner/TopMomentAnnotation';
+import IsItDelightfulContainer from './IsItDelightfulContainer';
 import { DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE } from 'utils/styling';
 import './cls-metric.css';
 
@@ -49,6 +50,7 @@ const ClsMetric = ({
     <ClsMetricLabel
       className='cls-metric-label'
       clsMetric={clsMetric} />
+    <IsItDelightfulContainer />
   </div>
 );
 
