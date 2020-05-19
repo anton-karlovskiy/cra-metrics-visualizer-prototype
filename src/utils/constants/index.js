@@ -20,7 +20,7 @@ const LIGHTHOUSE_ENDPOINT ='/lighthouse';
 const METRICS = {
   SERVER_RESPONSE_TIME: {
     ID: 'server-response-time',
-    TITLE: 'Server Response Time',
+    TITLE: 'Server Response',
     COLOR: '--palette-blue-500'
   },
   FIRST_PAINT: {
