@@ -75,7 +75,7 @@ const MetricsVisualizer = ({
             finalScreenshot={finalScreenshot}
             style={{
               padding: `${DISTANCE_BETWEEN_FILMSTRIPS_AND_TIMELINE}px ${METRICS_VISUALIZER_CLS_SIDE_PADDING}px`,
-              width: `calc((100% - ${METRICS_VISUALIZER_TIMING_SIDE_PADDING}px * 2 - ${METRICS_VISUALIZER_CLS_SIDE_PADDING}px * 2) / ${screenshotDetails?.items?.length || 0 + 1} + ${METRICS_VISUALIZER_CLS_SIDE_PADDING}px * 2)`
+              width: `calc((100% - ${METRICS_VISUALIZER_TIMING_SIDE_PADDING}px * 2 - ${METRICS_VISUALIZER_CLS_SIDE_PADDING}px * 2) / ${(screenshotDetails?.items?.length || 0) + 1} + ${METRICS_VISUALIZER_CLS_SIDE_PADDING}px * 2)`
             }} />
         )}
       </div>
