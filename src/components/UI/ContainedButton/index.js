@@ -19,7 +19,7 @@ import React, { lazy, Suspense } from 'react';
 import './contained-button.css';
 
 const LoadingSpinner = lazy(
-  () => import(/* webpackPrefetch: true, webpackChunkName: 'loading-spinner' */ 'components/LoadingSpinner')
+  () => import(/* webpackPrefetch: true, webpackChunkName: 'loading-spinner' */ 'components/UI/LoadingSpinner')
 );
 
 const ContainedButton = ({
