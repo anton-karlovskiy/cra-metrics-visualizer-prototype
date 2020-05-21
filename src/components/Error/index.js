@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React, { memo } from 'react';
+import React from 'react';
 
 import './error.css';
 
@@ -22,4 +22,4 @@ const Error = ({ className, error = {} }) => (
   <p className={`error ${className}`}>{error.message}</p>
 );
 
-export default memo(Error);
+export default Error;
