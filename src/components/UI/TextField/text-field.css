@@ -34,12 +34,6 @@ textarea {
   border: 1px solid var(--palette-grey-300);
   border-radius: 2px;
   color: var(--palette-common-black);
-  /* ray test touch < */
-  /* font-size: var(--typography-body1-font-size);
-  line-height: var(--typography-body1-line-height);
-  letter-spacing: var(--typography-body1-letter-spacing);
-  font-weight: var(--typography-font-weight-regular); */
-  /* ray test touch > */
   margin: 0;
   max-width: 100%;
   outline: 0;
