@@ -22,7 +22,7 @@ const Switch = ({
   className,
   name,
   checked = false,
-  onChange,
+  onChange = () => {},
   ...rest
 }) => (
   <label className={`switch ${className}`}>

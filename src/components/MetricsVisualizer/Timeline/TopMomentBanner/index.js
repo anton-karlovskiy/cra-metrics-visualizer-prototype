@@ -40,7 +40,7 @@ const TopMomentBanner = ({
           <TopMomentAnnotation
             style={{
               ...commonStyle,
-              transform: 'translate(-50%, -50%)',
+              transform: 'translate(-50%, 0)',
               color: 'var(--palette-lime-500)',
               left: `${usefulMomentPos}%`
             }}
@@ -50,7 +50,7 @@ const TopMomentBanner = ({
           <TopMomentAnnotation
             style={{
               ...commonStyle,
-              transform: 'translate(-80%, -50%)',
+              transform: 'translate(-80%, -100%)',
               color: 'var(--palette-orange-500)',
               left: `${usableMomentPos}%`
             }}
