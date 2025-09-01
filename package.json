@@ -15,11 +15,11 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "dev-client": "cross-env REACT_APP_ENV=development react-scripts start",
+    "dev-client": "cross-env REACT_APP_ENV=development NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
     "dev-server": "nodemon server.js",
     "start": "node server.js",
-    "dev-build": "cross-env REACT_APP_ENV=development react-scripts build",
-    "prod-build": "cross-env REACT_APP_ENV=production react-scripts build",
+    "dev-build": "cross-env REACT_APP_ENV=development NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
+    "prod-build": "cross-env REACT_APP_ENV=production NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy": "firebase deploy"
